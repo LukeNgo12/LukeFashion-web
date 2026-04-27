@@ -1,0 +1,65 @@
+<script lang="ts">
+import {defineComponent} from "vue";
+import {IonIcon} from "@ionic/vue";
+
+interface GlobalFilterData {
+  isOpen: boolean,
+  term: {
+    name: string,
+    slug: any[],
+    count: number,
+  };
+  attribute: {
+    showCount: number;
+  };
+  selectedTerms: string;
+  filterTitle: "";
+}
+
+export default defineComponent({
+  name: "GlobalFilter",
+  components: {
+    IonIcon
+  },
+  data(){
+    return {
+      isOpen: true,
+      term: {
+        name: "term",
+        slug:[],
+        count: 100
+      },
+      attribute: {
+        showCount: 1
+      },
+      selectedTerms: "",
+      filterTitle: ""
+    } as GlobalFilterData
+  } ,
+  methods: {
+    checkboxChanged(){
+
+    }
+  }
+})
+</script>
+
+<template>
+  <div class="cursor-pointer flex font-semibold mt-8 leading-none justify-between items-center text-gray-900 dark:text-white" @click="isOpen = !isOpen">
+    <span>{{ filterTitle }}</span>
+    <ion-icon name="ion:chevron-down-outline" class="transform text-gray-600 dark:text-gray-400" :class="isOpen ? 'rotate-180' : ''" />
+  </div>
+  <div v-show="isOpen" class="mt-3 mr-1 max-h-60 grid gap-1 overflow-auto custom-scrollbar">
+    <div v-for="term in attribute.terms" :key="term.slug" class="flex gap-2 items-center">
+      <input :id="term.slug" v-model="selectedTerms" type="checkbox" :value="term.slug" @change="checkboxChanged" />
+      <label :for="term.slug" class="cursor-pointer m-0 text-sm flex items-center flex-wrap text-gray-700 dark:text-gray-300">
+        <span v-html="term.name" />
+        <small v-if="attribute.showCount" class="ml-1 text-gray-400 dark:text-gray-500 tabular-nums" aria-hidden="true">({{ term.count || 0 }})</small>
+      </label>
+    </div>
+  </div>
+</template>
+
+<style scoped lang="postcss">
+
+</style>

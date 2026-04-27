@@ -1,0 +1,7 @@
+{
+  "name": "woo-commerce-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
