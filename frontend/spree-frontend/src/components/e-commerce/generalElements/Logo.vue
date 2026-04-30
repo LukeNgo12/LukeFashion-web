@@ -11,7 +11,7 @@ export default defineComponent({
   name: "Logo",
   data(){
     return {
-      logoUrl: "/src/assets/Luke-fashion-logo.png",
+      logoUrl: "/Luke-fashion-logo.png",
       faviconUrl: "",
       siteName: ""
     }

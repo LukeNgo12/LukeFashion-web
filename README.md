@@ -1,24 +1,44 @@
-# README
+# 🛒 My E-Commerce Shop
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An e-commerce platform built with **Vue.js** (frontend) and **Ruby on Rails** (backend).  
+This project is designed to provide a seamless shopping experience with modern UI, secure backend, and donation support.
 
-Things you may want to cover:
+---
 
-* Ruby version
+## 🚀 Features
+- **Frontend:** Vue.js for a responsive and dynamic user interface
+- **Backend:** Ruby on Rails for robust API and database management
+- **Authentication:** Secure user login and registration
+- **Product Management:** Add, edit, and manage products easily
+- **Shopping Cart:** Real-time cart updates and checkout flow
+- **Donations:** Support the project via direct bank transfer
 
-* System dependencies
+---
 
-* Configuration
+## 🛠️ Tech Stack
+| Layer        | Technology    |
+|--------------|---------------|
+| Frontend     | Vue.js        |
+| Backend      | Ruby on Rails |
+| Database     | MariaDB       |
+| Styling      | Tailwind CSS  |
+| Deployment   | Heroku / AWS  |
 
-* Database creation
+---
 
-* Database initialization
+## Donations
+If you’d like to support the project, you can send donations directly to:
+![Bank Logo](/home/lukengo/RubymineProjects/projects/SpreeCommerce-vue/frontend/spree-frontend/public/shinhan-bank-icon)
 
-* How to run the test suite
+- **Bank:** Shinhan Bank
+- **Account Number:** `0338934743`
+- **Currency:** KRW (₩)
 
-* Services (job queues, cache servers, search engines, etc.)
+Your support helps keep the project alive and growing!
 
-* Deployment instructions
-
-* ...
+---
+## 📦 Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ecommerce-shop.git
+   cd ecommerce-shop

@@ -35,10 +35,10 @@ export default {
 
   <section class="container my-16">
     <div class="flex items-end justify-between">
-      <h2 class="text-lg font-semibold md:text-2xl dark:text-white">Shop By Category</h2>
+      <h2 class="text-lg font-semibold md:text-2xl dark:text-white">{{$t('views.orderSummaryView.shopByCategory')}}</h2>
       <RouterLink
         class="text-primary-dark dark:text-primary" to="/categories"
-        >View All:</RouterLink>
+        >{{$t('views.orderSummaryView.viewAll')}}</RouterLink>
     </div>
     <div class="grid justify-center grid-cols-2 gap-4 mt-8 md:grid-cols-3 lg:grid-cols-6">
       <CategoryCard v-for="(category,i) in productCategories" :key="i" class="w-full" :node="category"/>

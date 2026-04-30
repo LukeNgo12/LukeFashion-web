@@ -8,17 +8,17 @@ export default defineComponent({
 
 <template>
   <div class="relative mx-auto">
-<!--    <img-->
-<!--      width="1400"-->
-<!--      height="800"-->
-<!--      class="object-cover w-full h-[420px] lg:h-[560px] xl:h-[640px]"-->
-<!--      src="/images/hero-4.jpg"-->
-<!--      alt="Hero image"-->
-<!--      loading="eager"-->
-<!--      sizes="sm:100vw md:1400px"-->
-<!--      :preload="{ fetchPriority: 'high' }"-->
-<!--      placeholder=""-->
-<!--      placeholder-class="blur-xl" />-->
+    <img
+      width="1400"
+      height="800"
+      class="object-cover w-full h-[420px] lg:h-[560px] xl:h-[640px]"
+      src="/Luke-fashion-logo.png"
+      alt="Hero image"
+      loading="eager"
+      sizes="sm:100vw md:1400px"
+      :preload="{ fetchPriority: 'high' }"
+      placeholder=""
+      placeholder-class="blur-xl" />
     <div class="container absolute inset-0 flex flex-col items-start justify-center bg-linear-to-l from-gray-200 sm:bg-none dark:text-gray-700">
       <h1 class="text-3xl font-bold md:mb-4 md:text-4xl lg:text-6xl">{{$t('generalElements.heroBanner.justLanded')}}</h1>
       <h2 class="text-lg font-bold md:mb-4 lg:text-3xl">{{$t('generalElements.heroBanner.theNewYear')}}</h2>

@@ -84,7 +84,7 @@
             {{$t('views.checkoutView.contactInformation')}}
           </h2>
           <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            {{$t('views.checkoutView.alreadyHaveAnAccount')}}<RouterLink to="/my-account" @click="navigateToLogin('/checkout')" class="text-primary text-semibold">{{$t('views.checkoutView.logIn')}}Log in</RouterLink>
+            {{$t('views.checkoutView.alreadyHaveAnAccount')}}<RouterLink to="/my-account" @click="navigateToLogin('/checkout')" class="text-primary text-semibold">{{$t('views.checkoutView.logIn')}}</RouterLink>
           </p>
           <div class="w-full mt-4">
             <label for="email">{{$t('views.checkoutView.billingEmail')}}</label>
@@ -100,7 +100,7 @@
             required=true
             />
             <Transition>
-              <div v-if="isInvalidEmail" class="mt-1 text-sm text-red-500">{{$t('views.checkoutView.invalidEmailAddress')}}Invalid email address</div>
+              <div v-if="isInvalidEmail" class="mt-1 text-sm text-red-500">{{$t('views.checkoutView.invalidEmailAddress')}}</div>
             </Transition>
           </div>
           <div v-if="orderInput.createAccount">
@@ -111,7 +111,7 @@
               </div>
             <div class="w-full my-2" v-if="orderInput.createAccount">
               <label for="email">{{$t('views.checkoutView.accountPassword')}}</label>
-              <input v-model="password" class="my-2" v-model="orderInput.password" placeholder="••••••••••" :required="true"/>
+              <input v-model="password" class="my-2"  placeholder="••••••••••" :required="true"/>
             </div>
           </div>
           <div class="w-full my-2" v-if="orderInput.createAccount">
@@ -124,7 +124,7 @@
           </div>
         </div>
         <div v-if="cart?.availableShippingMethods?.length">
-          <h2 class="mb-4 text-2xl font-semibold leading-none text-gray-900 dark:text-white">{{$t('views.checkoutView.billing')}}Billing</h2>
+          <h2 class="mb-4 text-2xl font-semibold leading-none text-gray-900 dark:text-white">{{$t('views.checkoutView.billing')}}</h2>
           <div class="flex items-center gap-3">
             <input
               id="useSameAddress"
@@ -174,9 +174,6 @@
       <div v-if="cart?.availableShippingMethods?.length">
         <h3 class="mb-4 text-xl font-semibold leading-none dark:text-white">{{$t('views.checkoutView.shippingSelect')}}</h3>
         <ShippingOptions
-        v-if="cart.availableShippingMethods[0]?.rates && cart.chosenShippingMethods?.[0]"
-        :options="cart.availableShippingMethods[0].rates"
-        :active-option="cart.chosenShippingMethods[0]"
         />
       </div>
       <hr class="border-gray-300 dark:border-gray-600" />

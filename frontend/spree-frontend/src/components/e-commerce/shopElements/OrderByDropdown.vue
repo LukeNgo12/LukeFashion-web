@@ -15,7 +15,7 @@ export default defineComponent({
   },
   data(){
     return {
-      selectedOrder: this.getOrderQuery(),
+      selectedOrder: "",
       order: "",
       orderby: "",
       storeSettings: {
@@ -45,9 +45,9 @@ export default defineComponent({
       v-model="orderby"
       class="select bg-white dark:bg-gray-700 dark:text-white border border-gray-300 dark:border-gray-600 rounded-l-none! border-l-0 text-sm leading-5 py-1.5"
       aria-label="Order by">
-      <option value="date">{{ $t('shopElements.orderByDropDown.latest') }}</option>
+      <option value="date">{{ $t('shopElements.orderByDropdown.latest') }}</option>
       <option value="alphabetically">{{ $t('shopElements.orderByDropdown.alphabetically') }}</option>
-      <option value="price">{{ $t('shopElements.orderByDropDown.price') }}</option>
+      <option value="price">{{ $t('shopElements.orderByDropdown.price') }}</option>
       <option v-if="storeSettings.showReviews" value="rating">{{ $t('shopElements.orderByDropdown.rating') }}</option>
       <option value="discount">{{ $t('shopElements.orderByDropdown.discount') }}</option>
     </select>

@@ -114,7 +114,7 @@ export function useCart() {
 
   // toggle the cart visibility
   function toggleCart(state: boolean | undefined = undefined): void {
-    isShowingCart.value = !isShowingCart.value
+    isShowingCart.value = state
   }
 
   // add an item to the cart

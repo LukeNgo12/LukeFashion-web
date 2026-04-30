@@ -1,10 +1,12 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import {IonIcon} from "@ionic/vue";
+import LoadingIcon from "@/components/e-commerce/ui/LoadingIcon.vue";
+import OrderStatusLabel from "@/components/e-commerce/shopElements/OrderStatusLabel.vue";
 
 export default defineComponent({
   name: "OrderList",
-  components: {IonIcon},
+  components: {IonIcon,LoadingIcon,OrderStatusLabel},
   data(){
     return {
       orders: [{

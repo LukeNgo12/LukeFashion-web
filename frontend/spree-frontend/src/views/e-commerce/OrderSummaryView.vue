@@ -40,14 +40,16 @@ export default defineComponent({
   },
   mounted(){
     const getOrder = async () => {
-      const data = await axios.get("http://localhost:3000/admin/orders").data
+      this.isLoaded = true
+      const data = await axios.get("http://localhost:3000/admin/orders")
+      const orderData = data.data
       const order = {
         databaseId: '1',
-        date: data?.created_at,
-        subtotal: data?.payment_total || 999,
-        totalTax: data?.included_tax_total,
-        status: data?.state,
-        paymentTitle: `[#${data.admin_order.id}] Order Payment`,
+        date: orderData?.created_at,
+        subtotal: orderData?.payment_total || 999,
+        totalTax: orderData?.included_tax_total,
+        status: orderData?.state,
+        paymentTitle: `[#${orderData.admin_order.id}] Order Payment`,
         paymentMethodTitle: "CreditCard",
         lineItems: {
           nodes: [{
@@ -67,14 +69,14 @@ export default defineComponent({
               }
             },
             total: 500,
-            quantity: data?.item_count
+            quantity: orderData?.item_count
           }]
         },
-        shippingTotal: data?.shipment_total,
-        discountTotal: data?.promo_total,
-        total: data?.payment_total
+        shippingTotal: orderData?.shipment_total,
+        discountTotal: orderData?.promo_total,
+        total: orderData?.payment_total
       }
-      this.order = order
+      return order;
     }
     getOrder()
 
@@ -125,58 +127,56 @@ export default defineComponent({
             <div class="mb-2 text-xs text-gray-400 dark:text-gray-500 uppercase">
               {{ $t('views.orderSummary.shopOrder') }}
             </div>
-            <div class="leading-none text-gray-900 dark:text-white">#{{ order.databaseId! }}</div>
+            <div class="leading-none text-gray-900 dark:text-white">#DatabaseId</div>
           </div>
           <div class="w-[21%]">
             <div class="mb-2 text-xs text-gray-400 dark:text-gray-500 uppercase">
               {{ $t('views.orderSummary.generalDate') }}
             </div>
-            <div class="leading-none text-gray-900 dark:text-white">{{
-                formatDate(order?.date)
-              }}
+            <div class="leading-none text-gray-900 dark:text-white">
+              Order Date
             </div>
           </div>
           <div class="w-[21%]">
             <div class="mb-2 text-xs text-gray-400 dark:text-gray-500 uppercase">
               {{ $t('views.orderSummary.generalStatus') }}
             </div>
-            <OrderStatusLabel v-if="order?.status" :order="order"/>
+            <OrderStatusLabel  :order="order"/>
           </div>
           <div class="w-[21%]">
             <div class="mb-2 text-xs text-gray-400 dark:text-gray-500 uppercase">
               {{ $t('views.orderSummary.generalPaymentMethod') }}
             </div>
-            <div class="leading-none text-gray-900 dark:text-white">{{
-                order?.paymentMethodTitle
-              }}
+            <div class="leading-none text-gray-900 dark:text-white">
+              Payment Method Title
             </div>
           </div>
         </div>
 
-        <template v-if="order.lineItems">
+        <template>
           <hr class="my-8 border-gray-200 dark:border-gray-700"/>
 
           <div class="grid gap-2">
-            <div v-for="item in order.lineItems.nodes" :key="item.id"
+            <div
                  class="flex items-center justify-between gap-8">
-              <RouterLink v-if="item.product?.node" :to="`/product/${item.product.node.slug}`">
-                <img
-                  class="w-16 h-16 rounded-xl"
-                  :src="item.variation?.node?.image?.sourceUrl || item.product.node?.image?.sourceUrl || '/images/placeholder.png'"
-                  :alt="item.variation?.node?.image?.altText || item.product.node?.image?.altText || 'Product image'"
-                  :title="item.variation?.node?.image?.title || item.product.node?.image?.title || 'Product image'"
-                  width="64"
-                  height="64"
-                  loading="lazy"/>
+              <RouterLink  :to="`/product/slug`">
+<!--                <img-->
+<!--                  class="w-16 h-16 rounded-xl"-->
+<!--                  :src="item.variation?.node?.image?.sourceUrl || item.product.node?.image?.sourceUrl || '/images/placeholder.png'"-->
+<!--                  :alt="item.variation?.node?.image?.altText || item.product.node?.image?.altText || 'Product image'"-->
+<!--                  :title="item.variation?.node?.image?.title || item.product.node?.image?.title || 'Product image'"-->
+<!--                  width="64"-->
+<!--                  height="64"-->
+<!--                  loading="lazy"/>-->
               </RouterLink>
               <div class="flex-1 leading-tight text-gray-900 dark:text-white">
-                {{ item.variation ? item.variation?.node?.name : item.product?.node.name! }}
+                item.variation
               </div>
               <div class="text-sm text-gray-600 dark:text-gray-400">
-                {{ $t('views.orderSummaryView.quantity') }} {{ item.quantity }}
+                {{ $t('views.orderSummaryView.quantity') }} {{ "item.quantity" }}
               </div>
               <span class="text-sm font-semibold text-gray-900 dark:text-white">{{
-                  formatPrice(item.total!)
+                  "item.total"
                 }}</span>
             </div>
           </div>
@@ -192,33 +192,33 @@ export default defineComponent({
         <div class="text-gray-800 dark:text-gray-200">
           <div class="flex justify-between">
             <span>{{ $t('views.orderSummaryView.shopSubtotal') }}</span>
-            <span v-html="order?.subtotal"></span>
+            <span >order.subtotal</span>
           </div>
           <div class="flex justify-between">
             <span>{{ $t('views.orderSummaryView.generalTax') }}</span>
-            <span v-html="order?.totalTax"></span>
+            <span >order.totalTax</span>
           </div>
           <div class="flex justify-between">
             <span>{{ $t('views.orderSummaryView.generalShipping') }}</span>
-            <span v-html="order?.shippingTotal"></span>
+            <span >order.shippingTotal</span>
           </div>
           <div v-if="hasDiscount" class="flex justify-between text-primary">
             <span>{{ $t('views.orderSummaryView.shopDiscount') }}</span>
-            <span>- <span v-html="order?.discountTotal"></span></span>
+            <span>- <span >order.discountTotal</span></span>
           </div>
           <hr class="my-8 border-gray-200 dark:border-gray-700"/>
           <div class="flex justify-between text-gray-900 dark:text-white">
-            <span class>{{ $t('views.orderSummaryView.shopTotal') }}Shop Total:</span>
-            <span class="font-semibold" v-html="order?.total"></span>
+            <span >{{ $t('views.orderSummaryView.shopTotal') }}</span>
+            <span class="font-semibold" >order.total</span>
           </div>
         </div>
       </div>
-      <div v-else-if="errorMessage"
+      <div
            class="flex flex-col items-center justify-center flex-1 w-full gap-4 text-center">
         <ion-icon name="ion:sad-outline" size="96" class="text-gray-700 dark:text-gray-400"/>
         <h1 class="text-xl font-semibold text-gray-900 dark:text-white">
-          {{ $t('views.orderSummaryView.error') }}Error</h1>
-        <div v-if="errorMessage" class="text-sm text-red-500 dark:text-red-400"
+          {{ $t('views.orderSummaryView.error') }}</h1>
+        <div  class="text-sm text-red-500 dark:text-red-400"
              v-html="errorMessage"/>
       </div>
     </template>

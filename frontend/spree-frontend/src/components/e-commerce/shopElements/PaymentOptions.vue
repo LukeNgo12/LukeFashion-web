@@ -64,25 +64,25 @@ export default defineComponent({
       v-for="gateway in paymentGateways?.nodes"
       :key="gateway.id"
       class="option"
-      :class="{ 'active-option': gateway.id === activePaymentMethod.id }"
+      :class="{ 'active-option': true }"
       @click="updatePaymentMethod(gateway)"
-      :title="gateway?.description || gateway?.title || 'Payment Method'">
-      <img
-        v-if="gateway.icon"
-        :src="gateway.icon"
-        :alt="gateway.title || 'Payment Method'"
-        width="20"
-        height="20"
-        class="h-5 w-5 object-contain"
-        fit="outside"
-        loading="lazy" />
-      <ion-icon v-else-if="gateway.id === 'stripe'" name="ion:card-outline" size="20" />
-      <ion-icon v-else-if="gateway.id === 'paypal'" name="ion:logo-paypal" size="20" />
-      <ion-icon v-else name="ion:cash-outline" size="20" />
-      <span class="whitespace-nowrap" v-html="gateway.title" />
+      :title=" `gateway.description`">
+<!--      <img-->
+<!--        v-if="gateway.icon"-->
+<!--        :src="gateway.icon"-->
+<!--        :alt="gateway.title || 'Payment Method'"-->
+<!--        width="20"-->
+<!--        height="20"-->
+<!--        class="h-5 w-5 object-contain"-->
+<!--        fit="outside"-->
+<!--        loading="lazy" />-->
+      <ion-icon name="ion:card-outline" size="20" />
+      <ion-icon name="ion:logo-paypal" size="20" />
+      <ion-icon  name="ion:cash-outline" size="20" />
+      <span class="whitespace-nowrap" v-html="'gateway.title'" />
       <ion-icon name="ion:checkmark-circle" size="20" class="ml-auto text-primary checkmark opacity-0" />
     </div>
-    <div v-if="activePaymentMethod.description" class="prose block w-full">
+    <div  class="prose block w-full">
       <p class="text-sm text-gray-500 dark:text-gray-400" v-html="activePaymentMethod.description" />
     </div>
   </div>

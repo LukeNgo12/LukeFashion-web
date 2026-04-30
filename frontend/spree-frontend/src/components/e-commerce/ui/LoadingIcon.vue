@@ -31,11 +31,11 @@ export default defineComponent({
     </defs>
     <g fill="none" fill-rule="evenodd">
       <g transform="translate(1 1)">
-        <path id="Oval-2" d="M36 18c0-9.94-8.06-18-18-18" :stroke="`url(#${gradientId})`" :stroke-width="stroke">
-          <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" :dur="speed" repeatCount="indefinite" />
+        <path id="Oval-2" d="M36 18c0-9.94-8.06-18-18-18" :stroke="`url(#${gradientId})`" :stroke-width="500">
+          <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" :dur="500" repeatCount="indefinite" />
         </path>
         <circle fill="#fff" cx="36" cy="18" r="1">
-          <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" :dur="speed" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" :dur="500" repeatCount="indefinite" />
         </circle>
       </g>
     </g>

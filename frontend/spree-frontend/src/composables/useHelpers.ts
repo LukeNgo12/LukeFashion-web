@@ -6,7 +6,6 @@ export function useHelpers() {
   // const runtimeConfig = useRuntimeConfig();
   const requestOrigin = window.location.origin || undefined;
 
-  const isShowingMobileMenu = ref<boolean>( false);
   const wooNuxtVersionInfo: string =  '0.0.0';
   const productsPerPage: number =  24;
   // const wooNuxtSEO = Array.isArray(runtimeConfig.public?.WOO_NUXT_SEO) ? runtimeConfig.public?.WOO_NUXT_SEO : [];
@@ -17,8 +16,10 @@ export function useHelpers() {
   /**
    * Toggles the mobile menu.
    */
+  let isShowingMobileMenu = ref<boolean>( false);
+
   function toggleMobileMenu(state: boolean | undefined = undefined): any {
-    isShowingMobileMenu.value = state
+    // isShowingMobileMenu.value = state
   }
 
   /**

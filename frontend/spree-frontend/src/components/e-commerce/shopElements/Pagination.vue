@@ -33,7 +33,7 @@ export default defineComponent({
     <nav v-if="numberOfPages && numberOfPages > 1" class="inline-flex self-end -space-x-px rounded-md shadow-xs isolate" aria-label="Pagination">
       <!-- PREV -->
       <RouterLink
-        :to="prevSrc(page)"
+        to="prevSrc(page)"
         class="prev"
         :disabled="page == 1"
         :class="{ 'cursor-not-allowed': page == 1 }"
@@ -46,7 +46,7 @@ export default defineComponent({
       <RouterLink
         v-for="pageNumber in numberOfPages"
         :key="pageNumber"
-        :to="numberSrc(pageNumber)"
+        to="numberSrc(pageNumber)"
         :aria-current="pageNumber === page ? 'page' : undefined"
         class="page-number">
         {{ pageNumber }}
@@ -54,7 +54,7 @@ export default defineComponent({
 
       <!-- NEXT -->
       <RouterLink
-        :to="nextSrc(page)"
+        to="nextSrc(page)"
         class="next"
         :disabled="page === numberOfPages"
         :class="{ 'cursor-not-allowed': page === numberOfPages }"

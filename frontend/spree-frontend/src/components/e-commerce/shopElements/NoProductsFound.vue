@@ -30,7 +30,7 @@ export default defineComponent({
       <p class="mt-4 max-w-md">
         <slot>{{ $t('shopElements.noProductsFound.subText') }}</slot>
       </p>
-      <button v-if="allProducts.length" class="mt-8" @click="clearAll">
+      <button  class="mt-8" @click="clearAll">
         {{ $t('shopElements.noProductsFound.clearFiltersAndSearch') }}
       </button>
     </div>

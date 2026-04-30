@@ -39,7 +39,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <span v-if="showSaleBadge" class="red-badge">{{ textToDisplay }}</span>
+  <span class="red-badge">text to display</span>
 
 </template>
 

@@ -2,6 +2,7 @@
 import {defineComponent} from 'vue'
 import { twMerge } from 'tailwind-merge';
 import {IonIcon} from "@ionic/vue"
+import LoadingIcon from "@/components/e-commerce/ui/LoadingIcon.vue";
 
 interface ButtonData {
   componentType: string;
@@ -34,7 +35,9 @@ interface PropsType {
 export default defineComponent({
   name: "Button",
   components: {
-    IonIcon
+    IonIcon,
+    LoadingIcon
+
   } ,
   props: {
 

@@ -66,7 +66,9 @@ export const i18n = createI18n({
           },
           "heroBanner": {
             "shopNow" : "Shop now",
-            "ourLatestCollection": "Our latest Collection is here"
+            "ourLatestCollection": "Our latest Collection is here",
+            "justLanded": "Just Landed",
+            "theNewYear": "The New Year"
           },
           "appFooter": {
             "about": "About",
@@ -165,9 +167,11 @@ export const i18n = createI18n({
           },
           "orderByDropdown": {
             "latest": "Latest",
-            "alphabetical": "Alphabetical",
+            "alphabetically": "Alphabetical",
             "rating": "Rating",
-            "discount": "Discount"
+            "discount": "Discount",
+            "price": "Price"
+
           },
           "orderStatusLabel": {},
           "orderSummary": {
@@ -175,7 +179,7 @@ export const i18n = createI18n({
             "subtotal": "Subtotal:",
             "shipping": "Shipping:",
             "discount": "Discount:",
-            "total": "Total:"
+            "total": "Total:",
           },
           "pagination": {
 
@@ -296,6 +300,27 @@ export const i18n = createI18n({
           },
           "categoriesView": {
             "noCategoriesFound": "No Categories Found"
+          },
+          "orderSummaryView": {
+            "shopByCategory":" Shop By Category",
+            "viewAll": "View All"
+          },
+          "contactView": {
+            "checkOurFAQs": "Check our FAQs first",
+            "shippingPolicy": "Shipping Policy",
+            "returnsAndExchange": "Returns & Exchanges",
+            "visitOurBoutique": "Visit Our Boutique",
+            "76LeBinh": "1277 Hiep Nhat, Ward Tan Son Nhat, Tan Binh dist, Ho Chi Minh City",
+            "sendAMessage": "Send a Message",
+            "fullName": "Full Name",
+            "emailAddress": "Email Address",
+            "orderNumber": "Order Number",
+            "message": "Message",
+            "contactUs": "Contact Us",
+            "haveAQuestion": "Have A Question",
+            "yourAnswer": "Your Answer",
+            "getInTouch": "Get In Touch",
+            "monToFri": "Monday To Friday, 9AM - 5PM VNT"
           }
 
         },

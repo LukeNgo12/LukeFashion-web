@@ -1,6 +1,10 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
-import { RouterLink } from 'vue-router'
+import {RouterLink} from 'vue-router'
+import SaleBadge from "@/components/e-commerce/productElements/SaleBadge.vue";
+import StarRating from "@/components/e-commerce/productElements/StarRating.vue";
+import ProductPrice from "@/components/e-commerce/productElements/ProductPrice.vue";
+import Button from "@/components/e-commerce/ui/Button.vue";
 
 interface ProductCardData {
   node: {
@@ -30,108 +34,92 @@ interface ProductCardData {
 export default defineComponent({
   name: "ProductCard",
   components: {
-RouterLink
+    Button,
+    RouterLink, SaleBadge, StarRating, ProductPrice
   },
-  props:{
-
+  props: {
+    sliderImages: {type: Object, default: {}},
+    node: {type: Object, default: {}}
   },
-  data(){
-    return {
-      node: {
-        slug: "",
-        averageRating: 5,
-        salePrice: 600,
-        name:"",
-        regularPrice: "",
-        reviewCount: 600
-      },
-      productLink: "",
-      imgWidth: 50,
-      imgHeight: 50,
-      sliderImages: [{
-        src : "",
-        alt: "",
-        title: "",
-        key: ""
-      }],
-      index: 4,
-      currentSlide: 6,
-      storeSettings: {
-        showReviews: true
-      }
-
-    } as ProductCardData
+  data() {
+    return {}
+  },
+  mounted() {
+    console.log(this.node.id)
   },
   methods: {
-    updateCurrentSlide(){
+    updateCurrentSlide() {
 
     },
-    scrollToSlide(dot: any){
+    scrollToSlide(dot: any) {
 
     }
-  }
+  },
 })
 </script>
 
 <template>
   <div class="relative group">
     <div class="relative block">
-      <SaleBadge :node class="absolute z-10 top-2 right-2" />
+      <SaleBadge class="absolute z-10 top-2 right-2"/>
       <div
         ref="sliderRef"
         class="no-slider flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x overscroll-x-contain overscroll-y-auto [-webkit-overflow-scrolling:touch]"
-        @scroll.passive="updateCurrentSlide">
-        <template v-for="(image, slideIndex) in sliderImages" :key="image.key">
-          <RouterLink
-            v-if="node.slug"
-            class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
-            :data-index="slideIndex"
-            :to="productLink">
-            <img
-              :width="imgWidth"
-              :height="imgHeight"
-              :src="image.src"
-              :alt="image.alt"
-              :title="image.title"
-              :loading="slideIndex === 0 && index <= 3 ? 'eager' : 'lazy'"
-              :sizes="`sm:${imgWidth / 2}px md:${imgWidth}px`"
-              class="object-cover object-top w-full h-full rounded-lg"
-              placeholder=""
-              placeholder-class="blur-xl" />
-          </RouterLink>
-          <div v-else class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg" :data-index="slideIndex">
-            <img
-              :width="imgWidth"
-              :height="imgHeight"
-              :src="image.src"
-              :alt="image.alt"
-              :title="image.title"
-              :loading="slideIndex === 0 && index <= 3 ? 'eager' : 'lazy'"
-              :sizes="`sm:${imgWidth / 2}px md:${imgWidth}px`"
-              class="object-cover object-top w-full h-full rounded-lg"
-              placeholder=""
-              placeholder-class="blur-xl" />
-          </div>
-        </template>
+        @scroll.passive="updateCurrentSlide"
+      >
+        <!--        <template v-for="(image, slideIndex) in sliderImages" :key="image.key">-->
+        <RouterLink
+          class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
+          :data-index="100"
+          to="/productLink">
+          <img
+
+            src="/Luke-fashion-logo.png"
+            alt="image.alt"
+            sizes="`sm:${100 / 2}px md:${100}px`"
+            class="object-cover object-top w-full h-full rounded-lg"
+
+          />
+        </RouterLink>
+        <div
+          class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
+          data-index="1">
+          <img
+            :width="500"
+            :height="500"
+            src="/Luke-fashion-logo.png"
+            alt="alt"
+            title="title"
+            :sizes="`sm:${500 / 2}px md:${500}px`"
+            class="object-cover object-top w-full h-full rounded-lg"
+          />
+        </div>
+
       </div>
-      <div v-if="sliderImages.length > 1" class="absolute flex gap-1 bottom-2 justify-self-center">
+      <div class="absolute flex gap-1 bottom-2 justify-self-center">
         <button
-          v-for="(image, dotIndex) in sliderImages"
-          :key="`dot-${image.key}`"
+          key="`dot-image-key`"
           class="product-card-dot rounded-full h-1.5 w-1.5 transition-colors cursor-pointer"
-          :class="dotIndex === currentSlide ? 'bg-white' : 'bg-gray-400/60'"
           type="button"
           tabindex="-1"
-          :aria-label="`View image ${dotIndex + 1} of ${sliderImages.length}`"
-          @click="scrollToSlide(dotIndex)" />
+          aria-label="`View image 1 of 1`"
+        >Button
+        </button>
       </div>
     </div>
     <div class="p-2">
-      <StarRating v-if="storeSettings.showReviews" :rating="node.averageRating ?? undefined" :count="node.reviewCount ?? undefined" />
-      <RouterLink v-if="node.slug" :to="productLink" :title="node.name || undefined">
-        <h2 class="mb-2 font-light leading-tight text-gray-900 dark:text-gray-200 group-hover:text-primary">{{ node.name }}</h2>
+      <StarRating/>
+      <RouterLink to="/productLink">
+        <h2
+          class="mb-2 font-light leading-tight text-gray-900 dark:text-gray-200 group-hover:text-primary">
+          {{node.productName}}</h2>
       </RouterLink>
-      <ProductPrice class="text-sm" :sale-price="node.salePrice ?? undefined" :regular-price="node.regularPrice ?? undefined" />
+
+      <ProductPrice class="text-sm"
+                    :regular-price="node.regularPrice"
+                    :salePrice="node.salePrice"
+
+      />
     </div>
   </div>
 </template>
