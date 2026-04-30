@@ -40,7 +40,7 @@ Your support helps keep the project alive and growing!
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/LukeFashion-web.git
-   cd ecommerce-shop
+   cd LukeFashion-web
 ---
 
 **Available Languages:**  

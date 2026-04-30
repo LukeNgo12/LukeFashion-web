@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Rswag::Api::Engine => '/api-docs'
   resource :session, only: [:new, :create, :destroy]
 
   # OR, if using Devise (the helper is usually new_user_session_path)
