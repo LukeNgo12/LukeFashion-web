@@ -28,7 +28,7 @@ This project is designed to provide a seamless shopping experience with modern U
 
 ## Donations
 If you’d like to support the project, you can send donations directly to:
-![Bank Logo](/home/lukengo/RubymineProjects/projects/SpreeCommerce-vue/frontend/spree-frontend/public/shinhan-bank-icon)
+![Bank Logo](/frontend/spree-frontend/public/shinhan-bank-icon)
 
 - **Bank:** Shinhan Bank
 - **Account Number:** `0338934743`
