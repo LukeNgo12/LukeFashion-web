@@ -47,21 +47,21 @@ export default {
 
   <section class="container grid gap-4 my-24 md:grid-cols-2 lg:grid-cols-4">
     <div class="flex items-center gap-8 p-8 bg-white dark:bg-gray-800 rounded-lg">
-<!--      <img src="/icons/box.svg" width="60" height="60" alt="Free Shipping" loading="lazy" />-->
+      <img src="/Luke-fashion-logo.png" width="60" height="60" alt="Free Shipping" loading="lazy" />
       <div>
         <h3 class="text-xl font-semibold dark:text-white">{{$t('views.homeView.freeShipping')}}</h3>
         <p class="text-sm dark:text-gray-300">{{$t('views.homeView.freeShippingOnOrder')}}</p>
       </div>
     </div>
     <div class="flex items-center gap-8 p-8 bg-white dark:bg-gray-800 rounded-lg">
-<!--      <img src="/icons/secure.svg" width="60" height="60" alt="Secure Payment" loading="lazy" />-->
+      <img src="/Luke-fashion-logo.png" width="60" height="60" alt="Secure Payment" loading="lazy" />
       <div>
         <h3 class="text-xl font-semibold dark:text-white">{{$t('views.homeView.paymentSource')}}</h3>
         <p class="text-sm dark:text-gray-300">{{$t('views.homeView.yourPaymentsAreSafe')}}</p>
       </div>
     </div>
     <div class="flex items-center gap-8 p-8 bg-white dark:bg-gray-800 rounded-lg">
-<!--      <img src="/icons/support.svg" width="60" height="60" alt="Support 24/7" loading="lazy"/>-->
+      <img src="/Luke-fashion-logo.png" width="60" height="60" alt="Support 24/7" loading="lazy"/>
       <div>
         <h3 class="text-xl font-semibold dark:text-white">{{$t('views.homeView.support24/7')}}</h3>
         <p class="text-sm dark:text-gray-300">{{$t('views.homeView.onlineSupport')}}</p>

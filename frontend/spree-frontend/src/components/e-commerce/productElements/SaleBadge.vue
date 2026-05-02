@@ -39,7 +39,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <span class="red-badge">text to display</span>
+  <span class="red-badge">sale</span>
 
 </template>
 

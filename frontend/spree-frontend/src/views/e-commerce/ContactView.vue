@@ -68,11 +68,9 @@ export default defineComponent({
             <section>
               <h2 class="text-xl font-semibold mb-4">{{$t('views.contactView.visitOurBoutique')}}</h2>
               <p class="text-slate-600 mb-4">{{$t('views.contactView.76LeBinh')}}</p>
+              <p class="text-slate-600 mb-4">Portfolio:</p>
               <div class="aspect-video w-full rounded-xl overflow-hidden bg-slate-200 shadow-inner">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976373946229!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus"
-                  width="100%" height="100%" style="border:0;"  loading="lazy">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.2432161900742!2d106.6577588!3d10.792675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752934bcdb39d9%3A0xde5af116c85ae74e!2zMTI3NyBIaeG7h3AgTmjhuqV0LCBQaMaw4budbmcgNCwgVMOibiBTxqFuIE5o4bqldCwgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1777544146331!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </section>
           </div>

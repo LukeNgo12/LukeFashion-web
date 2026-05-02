@@ -64,7 +64,7 @@
 
 <template>
   <div class="flex flex-col min-h-150">
-   <div v-if="cart && customer">
+   <div >
     <h2 class="mb-2 text-2xl font-bold">{{$t('views.checkoutView.title')}}</h2>
     <span class="mb-4 text-gray-400">{{$t('views.checkoutView.addProductsInYourCart')}}</span>
 
@@ -75,11 +75,11 @@
 
    </div>
 
-    <form v-else class="container flex flex-wrap items-start gap-8 my-16 justify evenly lg:gap-20" @submit.prevent="payNow"
+    <form class="container flex flex-wrap items-start gap-8 my-16 justify evenly lg:gap-20" @submit.prevent="payNow"
     >
 
       <div class="grid w-full max-w-2xl gap-8 wn-form md:flex-1">
-        <div v-if="!viewer && customer?.billing">
+        <div>
           <h2 class="w-full mb-2 text-2xl font-semibold leading-none dark:text-white">
             {{$t('views.checkoutView.contactInformation')}}
           </h2>
@@ -138,7 +138,7 @@
             </label>
           </div>
         </div>
-        <div v-else class="space-y-6">
+        <div class="space-y-6">
           <div>
 <!--            <ShippingDetails v-if="customer?.shipping" v-model="customer.shipping" />-->
           </div>

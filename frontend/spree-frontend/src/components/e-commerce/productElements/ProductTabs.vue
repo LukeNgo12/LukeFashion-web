@@ -1,5 +1,6 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
+import SaleBadge from "@/components/e-commerce/productElements/SaleBadge.vue";
 
 interface ProductTabs {
   imgWidth: number,
@@ -11,8 +12,12 @@ interface ProductTabs {
   galleryImages: {databaseId: number,sourceUrl: string, altText: string, title: string}[],
   FALLBACK_IMG: string
 }
+
 export default defineComponent({
   name: "ProductTabs",
+  components: {
+    SaleBadge
+  },
   props:{
     mainImage: {type: Object, required: true},
     gallery: {type: Object, required: true},
@@ -53,22 +58,16 @@ export default defineComponent({
       :height="imgWidth"
       :alt="imageToShow.altText || node.name"
       :title="imageToShow.title || node.name"
-      :src="imageToShow.sourceUrl || FALLBACK_IMG"
-      :preload="{ fetchPriority: 'high' }"
-      placeholder=""
-      placeholder-class="blur-xl" />
-    <div v-if="gallery.nodes.length" class="my-4 gallery-images">
+      :src="'/product-link'"
+
+    />
+    <div  class="my-4 gallery-images">
       <img
         v-for="galleryImg in galleryImages"
-        :key="galleryImg.databaseId"
         class="cursor-pointer rounded-xl"
-        :width="imgWidth"
-        :height="imgWidth"
-        :src="galleryImg.sourceUrl || FALLBACK_IMG"
+        :src="'/productlink'"
         :alt="galleryImg.altText || node.name"
         :title="galleryImg.title || node.name"
-        placeholder=""
-        placeholder-class="blur-xl"
         loading="lazy"
         @click.native="changeImage(galleryImg)" />
     </div>

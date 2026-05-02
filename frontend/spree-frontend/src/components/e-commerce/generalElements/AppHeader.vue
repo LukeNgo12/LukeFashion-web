@@ -45,6 +45,7 @@ export default defineComponent({
         <ProductSearch class="hidden sm:inline-flex max-w-80 w-[60%]" />
         <SearchTrigger />
         <div class="flex gap-4 items-center">
+
           <SignInLink />
           <CartTrigger />
         </div>

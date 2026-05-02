@@ -32,7 +32,7 @@ If you’d like to support the project, you can send donations directly to:
 
 - **Bank:** Shinhan Bank
 - **Account Number:** `0338934743`
-
+- **PayPal**
 Your support helps keep the project alive and growing!
 
 ---
@@ -49,3 +49,4 @@ Your support helps keep the project alive and growing!
 [日本語 (JP)](frontend/spree-frontend/public/readme/readme-jp/README.md)) |
 [中文 (CN)](frontend/spree-frontend/public/readme/readme-cn/README.md) |
 [English (EN)](frontend/spree-frontend/public/readme/readme-en/README.md))
+[Русский](frontend/spree-frontend/public/readme/readme-ru/README.md))

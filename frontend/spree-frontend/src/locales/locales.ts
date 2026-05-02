@@ -56,7 +56,18 @@ export const i18n = createI18n({
             "billingAndShipping":"",
             "billingAddress": ""
           },
-          "billingDetails": {},
+          "billingDetails": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "address1": "Address 1",
+            "address2": "Address 2",
+            "city": "City",
+            "state": "State",
+            "optional": "Optional",
+            "country": "Country",
+            "zip": "Zip",
+            "phone": "Phone",
+          },
           "changePassword": {},
           "loginAndRegister": {}
         },
@@ -180,6 +191,7 @@ export const i18n = createI18n({
             "shipping": "Shipping:",
             "discount": "Discount:",
             "total": "Total:",
+
           },
           "pagination": {
 
@@ -265,10 +277,16 @@ export const i18n = createI18n({
             "refreshList": "Refresh List",
             "noOrdersFound": "No Orders Found"
           },
-          "signInLink": {},
+          "signInLink": {
+            "myAccount": "My Account",
+            "wishList": "Wishlist",
+            "availability": "Availability",
+            "category": "Category",
+            "link": "Link",
+            "youMayLike": "You may like"
+          },
           "wishlistItem": {},
           "wpaAdminLink": {},
-
           },
         "views": {
           "homeView": {
@@ -310,7 +328,7 @@ export const i18n = createI18n({
             "shippingPolicy": "Shipping Policy",
             "returnsAndExchange": "Returns & Exchanges",
             "visitOurBoutique": "Visit Our Boutique",
-            "76LeBinh": "1277 Hiep Nhat, Ward Tan Son Nhat, Tan Binh dist, Ho Chi Minh City",
+            "76LeBinh": "1277 Hiệp Nhất, Phường 4, Tân Sơn Nhất, Hồ Chí Minh, Vietnam",
             "sendAMessage": "Send a Message",
             "fullName": "Full Name",
             "emailAddress": "Email Address",
@@ -321,9 +339,34 @@ export const i18n = createI18n({
             "yourAnswer": "Your Answer",
             "getInTouch": "Get In Touch",
             "monToFri": "Monday To Friday, 9AM - 5PM VNT"
-          }
+          },
+          "checkoutView": {
+            "title": "Check Out",
+            "addProductsInYourCart": "Add Products In Your Cart",
+            "contactInformation": "Contact Information",
+            "alreadyHaveAnAccountviews": {
+              "checkoutView": {
+                "logIn": "Login"
+              }
+            },
+            "billingEmail": "Billing Email",
+            "billing": "Billing",
+            "differentAddress": "Different Address",
+            "shippingSelect": "Shipping Select",
+            "shippingAddress": "Shipping Address",
+
+          },
+          "shopElements": {
+            "orderSummary": {
+              "paymentOptions": "Payment Options",
+              "orderNote": "Order Note"
+
+            }
+          },
+
 
         },
+
 
         },
       cn: {
@@ -368,7 +411,18 @@ export const i18n = createI18n({
             "billingAndShipping": "账单与配送",
             "billingAddress": "账单地址"
           },
-          "billingDetails": {},
+          "billingDetails": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "address1": "Address 1",
+            "address2": "Address 2",
+            "city": "City",
+            "state": "State",
+            "optional": "Optional",
+            "country": "Country",
+            "zip": "Zip",
+            "phone": "Phone",
+          },
           "changePassword": {},
           "loginAndRegister": {}
         },

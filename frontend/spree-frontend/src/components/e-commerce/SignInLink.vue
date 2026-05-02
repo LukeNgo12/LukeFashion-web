@@ -33,18 +33,18 @@ export default defineComponent({
 
 <template>
   <RouterLink to="/my-account" :title="linkTitle" @click="navigateToLogin(route.fullPath)" class="hidden sm:inline-flex aspect-square items-center">
-    <Transition name="pop-in" mode="out-in">
-      <span v-if="avatar" class="relative avatar">
+<!--    <Transition name="pop-in" mode="out-in">-->
+      <span  class="relative avatar">
         <img
-          :src="avatar"
+          src="/Luke-fashion-logo.png"
           class="rounded-full transform scale-125 shadow-md overflow-hidden border border-white my-auto"
           width="22"
           height="22"
           :alt="linkTitle" />
-        <div class="account-dropdown font-semibold">
-          <Button to="/my-account" size="sm" variant="ghost" class="w-full justify-start" icon="ion:person"> {{$t('components.signInLink.myAccount')}}</Button>
-          <Button :to="wishlistLink" size="sm" variant="ghost" class="w-full justify-start" icon="ion:heart"> {{$t('components.signInLink.wishList')}} </Button>
-          <Button
+        <div class="flex account-dropdown font-semibold">
+          <button to="/my-account" size="sm" variant="ghost" class="w-full justify-start" icon="ion:person"> {{$t('components.signInLink.myAccount')}}</button>
+          <button :to="wishlistLink" size="sm" variant="ghost" class="w-full justify-start" icon="ion:heart"> {{$t('components.signInLink.wishList')}} </button>
+          <button
             type="button"
             size="sm"
             variant="ghost"
@@ -53,11 +53,11 @@ export default defineComponent({
             @click="logoutUser"
             :loading="isPending">
             Logout
-          </Button>
+          </button>
         </div>
       </span>
-      <ion-icon  v-else name="ion:person-outline" size="22" class="border border-transparent" />
-    </Transition>
+      <ion-icon  name="ion:person-outline" size="22" class="border border-transparent" />
+<!--    </Transition>-->
   </RouterLink>
 </template>
 

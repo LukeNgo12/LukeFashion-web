@@ -37,11 +37,11 @@ export default defineComponent({
     <AppHeader />
 
     <Transition name="slide-from-right">
-      <LazyCart v-if="isShowingCart" />
+<!--      <LazyCart v-if="isShowingCart" />-->
     </Transition>
 
     <Transition name="slide-from-left">
-      <LazyMobileMenu v-if="isShowingMobileMenu" />
+<!--      <LazyMobileMenu v-if="isShowingMobileMenu" />-->
     </Transition>
 
     <div class="flex flex-col items-center justify-center flex-1 gap-4 min-h-[500px]">
@@ -53,7 +53,7 @@ export default defineComponent({
       <div v-if="isShowingCart || isShowingMobileMenu" class="bg-black opacity-25 inset-0 z-40 fixed" @click="closeCartAndMenu" />
     </Transition>
 
-    <LazyAppFooter hydrate-on-visible />
+<!--    <LazyAppFooter hydrate-on-visible />-->
   </div>
 </template>
 

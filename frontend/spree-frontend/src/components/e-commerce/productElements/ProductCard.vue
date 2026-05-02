@@ -68,19 +68,20 @@ export default defineComponent({
         @scroll.passive="updateCurrentSlide"
       >
         <!--        <template v-for="(image, slideIndex) in sliderImages" :key="image.key">-->
-        <RouterLink
+        <router-link
           class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
           :data-index="100"
-          to="/productLink">
+          :to="'/product/' + node.frontendId">
+
           <img
 
-            src="/Luke-fashion-logo.png"
+            :src="node.images[0]"
             alt="image.alt"
             sizes="`sm:${100 / 2}px md:${100}px`"
             class="object-cover object-top w-full h-full rounded-lg"
 
           />
-        </RouterLink>
+        </router-link>
         <div
           class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
           data-index="1">
@@ -109,15 +110,15 @@ export default defineComponent({
     </div>
     <div class="p-2">
       <StarRating/>
-      <RouterLink to="/productLink">
+      <router-link :to="'/product/' + node.frontendId">
         <h2
           class="mb-2 font-light leading-tight text-gray-900 dark:text-gray-200 group-hover:text-primary">
-          {{node.productName}}</h2>
-      </RouterLink>
+          {{node.productName.en}}</h2>
+      </router-link>
 
       <ProductPrice class="text-sm"
                     :regular-price="node.regularPrice"
-                    :salePrice="node.salePrice"
+                    :salePrice="node.singularPrice"
 
       />
     </div>
