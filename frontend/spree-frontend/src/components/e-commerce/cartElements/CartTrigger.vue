@@ -2,6 +2,7 @@
 import {defineComponent} from "vue";
 import {IonIcon} from "@ionic/vue";
 import ClientOnly from "vue-client-only";
+import {cartOutline} from "ionicons/icons";
 
 
 interface CartTriggerData {
@@ -25,8 +26,9 @@ export default defineComponent({
         contents: {
           itemCount: 1
         }
-      }
-    } as CartTriggerData
+      },
+      cartOutline: cartOutline
+    } as any
 
   },
 
@@ -45,7 +47,7 @@ export default defineComponent({
 
 <template>
   <div class="cart-trigger relative cursor-pointer inline-flex" title="Cart" @click="toggleCart">
-    <ion-icon name="ion:cart-outline" size="22" class="mr-1 md:mr-0"/>
+    <ion-icon :icon="cartOutline" size="22" class="mr-1 md:mr-0"/>
 
       <Transition name="popIn" mode="out-in">
         <span

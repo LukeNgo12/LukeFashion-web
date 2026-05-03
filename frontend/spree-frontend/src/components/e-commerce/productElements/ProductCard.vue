@@ -67,35 +67,42 @@ export default defineComponent({
         class="no-slider flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x overscroll-x-contain overscroll-y-auto [-webkit-overflow-scrolling:touch]"
         @scroll.passive="updateCurrentSlide"
       >
-        <!--        <template v-for="(image, slideIndex) in sliderImages" :key="image.key">-->
         <router-link
-          class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
-          :data-index="100"
-          :to="'/product/' + node.frontendId">
+           class="product-card-image product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
+           :data-index="100"
+           :to="'/product/' + node.frontendId">
 
-          <img
+           <img
+             :src="node.images[0]"
+             alt="image.alt"
+             sizes="`sm:${100 / 2}px md:${100}px`"
+             class="object-cover object-top w-full h-full rounded-lg"
 
-            :src="node.images[0]"
-            alt="image.alt"
-            sizes="`sm:${100 / 2}px md:${100}px`"
-            class="object-cover object-top w-full h-full rounded-lg"
+           />
 
-          />
         </router-link>
+        <div
+                v-for="(image, slideIndex) in node.images"
+
+        class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
+          data-index="1">
+          <img
+            :src="image"
+            alt="alt"
+            title="title"
+            class="product-image-card object-cover object-top w-full h-full rounded-lg"
+          />
+        </div>
         <div
           class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
           data-index="1">
           <img
-            :width="500"
-            :height="500"
-            src="/Luke-fashion-logo.png"
+            :src="node.images[1]"
             alt="alt"
             title="title"
-            :sizes="`sm:${500 / 2}px md:${500}px`"
-            class="object-cover object-top w-full h-full rounded-lg"
+            class="product-image-card object-cover object-top w-full h-full rounded-lg"
           />
         </div>
-
       </div>
       <div class="absolute flex gap-1 bottom-2 justify-self-center">
         <button
@@ -126,5 +133,8 @@ export default defineComponent({
 </template>
 
 <style scoped lang="postcss">
-
+.product-image-card {
+  width: 500px;
+  height: 500px;
+}
 </style>

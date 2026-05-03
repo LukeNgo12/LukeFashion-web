@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
-import {RouterLink} from "vue-router";
+import {RouterLink, useRoute} from "vue-router";
 import SEOHead from "@/components/e-commerce/generalElements/SEOHead.vue";
 import ProductImageGallery from "@/components/e-commerce/productElements/ProductImageGallery.vue";
 import StarRating from "@/components/e-commerce/productElements/StarRating.vue";
@@ -10,9 +10,23 @@ import AttributeSelections from "@/components/e-commerce/productElements/Attribu
 import WishlistButton from "@/components/e-commerce/productElements/WishlistButton.vue";
 import ShareButton from "@/components/e-commerce/productElements/ShareButton.vue";
 import ProductTabs from "@/components/e-commerce/productElements/ProductTabs.vue";
+import ProductRow from "@/components/e-commerce/shopElements/ProductRow.vue";
+import {PRODUCTS} from "@/data/products.ts";
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: "ProductView",
+  setup(){
+    const route = useRoute();
+    const productByIdList = PRODUCTS.filter(product => {
+      return product.frontendId === route.params.productFrontendId;
+    })
+    const productById = productByIdList[0]
+    const { locale, t } = useI18n()
+
+    // Change locale
+    return {route,productById, t,locale}
+  },
   components: {
     RouterLink,
     SEOHead,
@@ -23,7 +37,8 @@ export default defineComponent({
     AttributeSelections,
     WishlistButton,
     ShareButton,
-    ProductTabs
+    ProductTabs,
+    ProductRow
 
   },
   data(){
@@ -80,16 +95,16 @@ export default defineComponent({
     handleAddToCart(){
 
     }
-  }
+  },
 })
 </script>
 
 <template>
-  <main class="container relative py-6 xl:max-w-7xl">
+  <main v-if="productById" class="container relative py-6 xl:max-w-7xl">
     <div >
 <!--      <SEOHead :info="product" />-->
 <!--      <Breadcrumb :product class="mb-6" />-->
-
+      {{ console.log(productById) }}
       <div class="flex flex-col gap-10 md:flex-row md:justify-between lg:gap-24">
         <ProductImageGallery
           :main-image="productImage"
@@ -102,22 +117,24 @@ export default defineComponent({
         <div class="w-full lg:max-w-md xl:max-w-lg md:py-2">
           <div class="flex justify-between mb-4">
             <div class="flex-1">
-              <h1 class="flex flex-wrap items-center gap-2 mb-2 text-2xl font-sesmibold">
-                {{ "displayProduct.name" }}
+              {{console.log(locale)}}
+
+              <h1 v-if="locale" class="flex flex-wrap items-center gap-2 mb-2 text-2xl font-sesmibold">
+                {{ productById.productName[locale]  }}
 <!--                <LazyWPAdminLink :link="`/wp-admin/post.php?post=${"product.databaseId"}&action=edit`">Edit</LazyWPAdminLink>-->
               </h1>
               <StarRating :rating="averageRating" :count="reviewCount"  />
             </div>
-            <ProductPrice class="text-xl" :sale-price="priceTarget?.salePrice" :regular-price="priceTarget?.regularPrice" />
+            <ProductPrice class="text-xl" :sale-price="productById?.singularPrice" :regular-price="productById?.regularPrice" />
           </div>
 
           <div class="grid gap-2 my-8 text-sm empty:hidden">
             <div class="flex items-center gap-2">
-              <span class="text-gray-400">{{ $t('components.signinLink.availability') }}: </span>
+              <span class="text-gray-400">{{ $t('components.signInLink.availability') }}: </span>
               <StockStatus :stockStatus="stockStatus" @updated="mergeLiveStockStatus" />
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-gray-400">{{ $t('shop.sku') }}: </span>
+              <span class="text-gray-400">{{ $t('views.productView.sku') }}: </span>
               <span class="">{{ product?.sku || 'N/A' }}</span>
             </div>
           </div>
@@ -159,11 +176,9 @@ export default defineComponent({
                 <span class="text-gray-400">{{ $t('components.signInLink.category', 2) }}:</span>
                 <div class="product-categories">
                   <router-link
-                    v-for="category in product.productCategories.nodes"
-                    :key="category.databaseId"
                     :to="`/product-category/${decodeURIComponent(category?.slug || '')}`"
                     class="hover:text-primary"
-                  >{{ category.name }}<span class="comma">, </span>
+                  >{{ productById.categories[0] }}<span class="comma">, </span>
                   </router-link>
                 </div>
               </div>
@@ -182,7 +197,7 @@ export default defineComponent({
       </div>
       <div class="my-32" >
         <div class="mb-4 text-xl font-semibold">{{ $t('components.signInLink.youMayLike') }}</div>
-<!--        <LazyProductRow :products="product.related.nodes" class="grid-cols-2 md:grid-cols-4 lg:grid-cols-5" />-->
+<!--        <ProductRow :products="product.related.nodes" class="grid-cols-2 md:grid-cols-4 lg:grid-cols-5" />-->
       </div>
     </div>
   </main>

@@ -2,11 +2,13 @@
 import {defineComponent} from "vue";
 import {IonIcon} from "@ionic/vue";
 import Button from "@/components/e-commerce/ui/Button.vue";
-
+import {personOutline} from "ionicons/icons";
 export default defineComponent({
   components: {
     IonIcon,
-    Button
+    Button,
+
+
   },
   data(){
     return {
@@ -16,7 +18,11 @@ export default defineComponent({
       route: {
         fullPath: ""
       },
-      wishlistLink: ""
+      wishlistLink: "",
+      personOutline
+,
+      user: {
+      },
     }
   },
   methods : {
@@ -35,13 +41,9 @@ export default defineComponent({
   <RouterLink to="/my-account" :title="linkTitle" @click="navigateToLogin(route.fullPath)" class="hidden sm:inline-flex aspect-square items-center">
 <!--    <Transition name="pop-in" mode="out-in">-->
       <span  class="relative avatar">
-        <img
-          src="/Luke-fashion-logo.png"
-          class="rounded-full transform scale-125 shadow-md overflow-hidden border border-white my-auto"
-          width="22"
-          height="22"
-          :alt="linkTitle" />
-        <div class="flex account-dropdown font-semibold">
+
+        <div v-if="user.account" class="flex account-dropdown font-semibold">
+
           <button to="/my-account" size="sm" variant="ghost" class="w-full justify-start" icon="ion:person"> {{$t('components.signInLink.myAccount')}}</button>
           <button :to="wishlistLink" size="sm" variant="ghost" class="w-full justify-start" icon="ion:heart"> {{$t('components.signInLink.wishList')}} </button>
           <button
@@ -55,8 +57,12 @@ export default defineComponent({
             Logout
           </button>
         </div>
+        <div v-else>
+                               <ion-icon  :icon="personOutline" size="22" class="border border-transparent" />
+
+        </div>
+
       </span>
-      <ion-icon  name="ion:person-outline" size="22" class="border border-transparent" />
 <!--    </Transition>-->
   </RouterLink>
 </template>

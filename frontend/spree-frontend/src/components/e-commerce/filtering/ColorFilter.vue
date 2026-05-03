@@ -52,5 +52,41 @@ export default defineComponent({
 </template>
 
 <style scoped lang="postcss">
+@reference "#tailwind";
 
+.swatches {
+  grid-template-columns: repeat(auto-fit, minmax(24px, 1fr));
+}
+
+.swatches label {
+  @apply rounded-md cursor-pointer shadow-xs m-0 mb-1 w-full block relative;
+  background-color: var(--color, #eee);
+  filter: saturate(0.75);
+  aspect-ratio: 1/1;
+  transition: all 0.2s ease;
+}
+
+.swatches label:hover,
+.swatches input:checked + label {
+  filter: saturate(1);
+}
+
+/* tick */
+.swatches input:checked + label::after {
+  content: '';
+  width: 25%;
+  height: 40%;
+  border-right: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* Make tick black if the color is white */
+.swatches input:checked + label[for='white']::after,
+.swatches input:checked + label[for='yellow']::after {
+  border-color: #666;
+}
 </style>

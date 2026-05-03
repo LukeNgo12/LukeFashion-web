@@ -52,7 +52,9 @@ export default defineComponent({
         </div>
       </TransitionGroup>
       <Pagination/>
+
     </section>
+
     <NoProductsFound v-else/>
   </Transition>
 </template>

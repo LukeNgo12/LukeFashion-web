@@ -1,8 +1,9 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import {IonIcon} from "@ionic/vue";
-import {logoIonic} from "ionicons/icons";
-import {SliderRoot, SliderThumb, SliderTrack} from "reka-ui";
+import {chevronDown, logoIonic} from "ionicons/icons";
+import {SliderRange, SliderRoot, SliderThumb, SliderTrack} from "reka-ui";
+chevronDown
 interface PriceFilterData {
   model: number;
   price: string[];
@@ -17,7 +18,8 @@ export default defineComponent({
     IonIcon,
     SliderRoot,
     SliderTrack,
-    SliderThumb
+    SliderThumb,
+    SliderRange
   },
   data(){
     return {
@@ -25,11 +27,12 @@ export default defineComponent({
       price: [
         "5",
       ],
+      chevronDown,
       isOpen: true,
       maxPrice: 500,
       applyPrice: 500,
       currencySymbol : "",
-    } as PriceFilterData
+    } as any
   }
 })
 </script>
@@ -38,7 +41,7 @@ export default defineComponent({
   <div>
     <div class="flex items-center justify-between mt-8 font-semibold leading-none text-gray-900 cursor-pointer dark:text-white" @click="isOpen = !isOpen">
       <span>{{$t('filtering.priceFilter.price')}}</span>
-      <ion-icon name="ion:chevron-down-outline" class="text-gray-600 transform dark:text-gray-400" :class="isOpen ? 'rotate-180' : ''" />
+      <ion-icon :icon="chevronDown" class="text-gray-600 transform dark:text-gray-400" :class="isOpen ? 'rotate-180' : ''" />
     </div>
     <div v-show="isOpen" class="grid grid-cols-2 gap-4 mt-3">
       <div class="relative flex items-center">

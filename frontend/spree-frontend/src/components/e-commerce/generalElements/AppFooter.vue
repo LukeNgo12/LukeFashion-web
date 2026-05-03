@@ -72,7 +72,7 @@ export default defineComponent({
             {{ $t('generalElements.appFooter.topRated') }}
           </RouterLink>
 
-          <RouterLink href="/" class="py-1.5 block">
+          <RouterLink to="/" class="py-1.5 block">
             {{ $t('generalElements.appFooter.giftCards') }}
           </RouterLink>
         </div>

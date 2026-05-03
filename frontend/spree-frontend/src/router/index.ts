@@ -54,6 +54,10 @@ const router = createRouter({
       component: () => import('../views/e-commerce/CategoriesView.vue')
     },
 
+    {
+      path: '/wishlist',
+      component: () => import('../views/e-commerce/WishlistView.vue')
+    },
   ],
 })
 

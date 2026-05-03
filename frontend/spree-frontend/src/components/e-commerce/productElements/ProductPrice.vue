@@ -17,8 +17,8 @@ export default defineComponent({
 
 <template>
   <div v-if="regularPrice" class="flex font-semibold dark:text-gray-100">
-    <span :class="{ 'text-gray-400 dark:text-gray-500 line-through font-normal': 50 }"  >{{regularPrice}} KRW</span>
-    <span  > {{salePrice}} KRW</span>
+    <span :class="{ 'text-gray-400 dark:text-gray-500 line-through font-normal': 50 }"  >{{regularPrice}} VND</span>
+    <span  > {{salePrice}} VND</span>
   </div>
 </template>
 

@@ -5,6 +5,8 @@ import PriceFilter from "@/components/e-commerce/filtering/PriceFilter.vue";
 import CategoryFilter from "@/components/e-commerce/filtering/CategoryFilter.vue";
 import ColorFilter from "@/components/e-commerce/filtering/ColorFilter.vue";
 import GlobalFilter from "@/components/e-commerce/filtering/GlobalFilter.vue";
+import StarRatingFilter from "@/components/e-commerce/filtering/StarRatingFilter.vue";
+import ResetFiltersButton from "@/components/e-commerce/filtering/ResetFiltersButton.vue";
 
 interface Filters {
   isFilterActive: boolean;
@@ -29,7 +31,8 @@ export default defineComponent({
     CategoryFilter,
     ColorFilter,
     GlobalFilter,
-
+    StarRatingFilter,
+    ResetFiltersButton
   },
   data(){
     return {
@@ -61,14 +64,14 @@ export default defineComponent({
     <OrderByDropdown class="block w-full md:hidden" />
     <div class="relative z-30 grid mb-12 divide-y divide-gray-200 dark:divide-gray-700 filters-container">
       <PriceFilter />
-      <CategoryFilter v-if="!hideCategories" :terms="productCategoryTerms" />
+      <CategoryFilter  :terms="productCategoryTerms" />
       <div v-for="attribute in attributesWithTerms" :key="attribute.slug">
         <ColorFilter v-if="attribute.slug == 'pa_color' || attribute.slug == 'pa_colour'" :attribute />
         <GlobalFilter v-else :attribute />
       </div>
       <OnSaleFilter />
-      <LazyStarRatingFilter v-if="storeSettings.showReviews" />
-      <LazyResetFiltersButton v-if="isFiltersActive" />
+      <StarRatingFilter v-if="storeSettings.showReviews" />
+      <ResetFiltersButton v-if="isFiltersActive" />
     </div>
   </aside>
   <div class="fixed inset-0 z-50 hidden bg-black dark:bg-black opacity-25 dark:opacity-50 filter-overlay" @click="removeBodyClass('show-filters')"></div>

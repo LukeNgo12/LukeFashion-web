@@ -143,7 +143,7 @@ export const i18n = createI18n({
           "saleBadge": {},
           "shareButton": {},
           "starRating": {},
-          "stockStatus": {},
+
           "wishlistButton": {}
         },
 
@@ -285,6 +285,9 @@ export const i18n = createI18n({
             "link": "Link",
             "youMayLike": "You may like"
           },
+          "stockStatus": {
+            "inStock": "In Stock"
+          },
           "wishlistItem": {},
           "wpaAdminLink": {},
           },
@@ -355,6 +358,9 @@ export const i18n = createI18n({
             "shippingSelect": "Shipping Select",
             "shippingAddress": "Shipping Address",
 
+          },
+          "productView": {
+            "sku": "SKU"
           },
           "shopElements": {
             "orderSummary": {
@@ -600,7 +606,10 @@ export const i18n = createI18n({
             "refreshList": "刷新列表",
             "noOrdersFound": "未找到订单"
           },
-          "signInLink": {},
+          "signInLink": {
+            "availability": "Availability",
+          },
+
           "wishlistItem": {},
           "wpaAdminLink": {},
           "views": {

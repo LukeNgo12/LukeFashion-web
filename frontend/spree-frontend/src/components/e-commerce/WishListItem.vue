@@ -2,6 +2,7 @@
 import {RouterLink} from "vue-router";
 import {defineComponent} from "vue";
 import Button from "@/components/e-commerce/ui/Button.vue";
+import ProductPrice from "@/components/e-commerce/productElements/ProductPrice.vue";
 
 interface WishListItemData {
 
@@ -19,9 +20,11 @@ interface WishListItemData {
   }
 }
 export default defineComponent({
+  name: "WishlistItem",
   components: {
     RouterLink,
-    Button
+    Button,
+    ProductPrice
   },
   data(){
     return {
