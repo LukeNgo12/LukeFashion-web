@@ -3,11 +3,13 @@ import {defineComponent} from 'vue'
 import {useHelpers} from "@/composables/useHelpers.ts";
 import Button from "@/components/e-commerce/ui/Button.vue";
 import {useCart} from "@/composables/useCart.ts";
+import {RouterLink} from "vue-router";
 
 export default defineComponent({
   name: "MainMenu",
   components: {
-    Button
+    Button,
+    RouterLink
   },
   setup(){
     const {toggleMobileMenu} = useHelpers()
@@ -34,13 +36,13 @@ export default defineComponent({
 
 <template>
   <nav>
-    <RouterLink to="/">{{$t('generalElements.mainMenu.home')}}</RouterLink>
-    <RouterLink to="/products">{{$t('generalElements.mainMenu.products')}}</RouterLink>
-    <RouterLink to="/categories">{{$t('generalElements.mainMenu.category')}}</RouterLink>
-    <RouterLink to="/contact">{{$t('generalElements.mainMenu.contact')}}</RouterLink>
+    <router-link to="/">{{$t('generalElements.mainMenu.home')}}</router-link>
+    <router-link to="/productsList">{{$t('generalElements.mainMenu.products')}}</router-link>
+    <router-link to="/categories">{{$t('generalElements.mainMenu.category')}}</router-link>
+    <router-link to="/contact">{{$t('generalElements.mainMenu.contact')}}</router-link>
 
-    <RouterLink class="lg:hidden" :to="wishlistLink" :prefetch="false">{{$t('generalElements.mainMenu.wishList')}}</RouterLink>
-    <RouterLink class="lg:hidden" to="/my-account" @click="navigateToLogin(route.fullPath)" :prefetch="false">{{$t('generalElements.mainMenu.myAccount')}}</RouterLink>
+    <router-link class="lg:hidden" :to="wishlistLink" :prefetch="false">{{$t('generalElements.mainMenu.wishList')}}</router-link>
+    <router-link class="lg:hidden" to="/my-account" @click="navigateToLogin(route.fullPath)" :prefetch="false">{{$t('generalElements.mainMenu.myAccount')}}</router-link>
   </nav>
 </template>
 

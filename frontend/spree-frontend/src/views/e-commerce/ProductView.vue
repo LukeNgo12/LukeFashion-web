@@ -106,12 +106,12 @@ export default defineComponent({
 <!--      <Breadcrumb :product class="mb-6" />-->
       {{ console.log(productById) }}
       <div class="flex flex-col gap-10 md:flex-row md:justify-between lg:gap-24">
-        <ProductImageGallery
-          :main-image="productImage"
-          :gallery="productGallery"
-          :node="displayProduct"
-          :activeVariation="activeVariation
-          || {}" />
+<!--        <ProductImageGallery-->
+<!--          :main-image="productImage"-->
+<!--          :gallery="productGallery"-->
+<!--          :node="displayProduct"-->
+<!--          :activeVariation="activeVariation-->
+<!--          || {}" />-->
         <img  class="relative flex-1 skeleton" src="/Luke-fashion-logo.png" :alt="product.name" />
 
         <div class="w-full lg:max-w-md xl:max-w-lg md:py-2">
@@ -120,7 +120,7 @@ export default defineComponent({
               {{console.log(locale)}}
 
               <h1 v-if="locale" class="flex flex-wrap items-center gap-2 mb-2 text-2xl font-sesmibold">
-                {{ productById.productName[locale]  }}
+                {{ productById.productName   }}
 <!--                <LazyWPAdminLink :link="`/wp-admin/post.php?post=${"product.databaseId"}&action=edit`">Edit</LazyWPAdminLink>-->
               </h1>
               <StarRating :rating="averageRating" :count="reviewCount"  />
@@ -176,7 +176,7 @@ export default defineComponent({
                 <span class="text-gray-400">{{ $t('components.signInLink.category', 2) }}:</span>
                 <div class="product-categories">
                   <router-link
-                    :to="`/product-category/${decodeURIComponent(category?.slug || '')}`"
+                    :to="`/product-category/`"
                     class="hover:text-primary"
                   >{{ productById.categories[0] }}<span class="comma">, </span>
                   </router-link>

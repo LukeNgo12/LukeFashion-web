@@ -32,7 +32,7 @@ export default defineComponent({
         showOrderByDropdown: true
       },
       hasProducts: true
-    } as ProductsViewData
+    } as any
   },
   methods: {
 
@@ -44,21 +44,22 @@ export default defineComponent({
 </script>
 
 <template>
-  <main>
-    <div class="container flex items-start gap-16" v-if="hasProducts">
-      <Filters v-if="storeSettings.showFilters" />
+  abcc
+<!--  <main>-->
+<!--    <div class="container flex items-start gap-16" v-if="hasProducts">-->
+<!--      <Filters v-if="storeSettings.showFilters" />-->
 
-      <div class="w-full">
-        <div class="flex items-center justify-between w-full gap-4 mt-8 md:gap-8">
-          <ProductResultCount />
-          <OrderByDropdown class="hidden md:inline-flex" v-if="storeSettings.showOrderByDropdown" />
-<!--          <ShowFilterTrigger v-if="storeSettings.showFilters" class="md:hidden" />-->
-        </div>
-        <ProductGrid />
-      </div>
-    </div>
-    <NoProductsFound v-else>{{$t('views.products.noProductsFound')}}</NoProductsFound>
-  </main>
+<!--      <div class="w-full">-->
+<!--        <div class="flex items-center justify-between w-full gap-4 mt-8 md:gap-8">-->
+<!--          <ProductResultCount />-->
+<!--          <OrderByDropdown class="hidden md:inline-flex" v-if="storeSettings.showOrderByDropdown" />-->
+<!--&lt;!&ndash;          <ShowFilterTrigger v-if="storeSettings.showFilters" class="md:hidden" />&ndash;&gt;-->
+<!--        </div>-->
+<!--        <ProductGrid />-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <NoProductsFound v-else>{{$t('views.products.noProductsFound')}}</NoProductsFound>-->
+<!--  </main>-->
 </template>
 
 <style scoped lang="postcss">

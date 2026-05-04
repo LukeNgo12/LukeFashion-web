@@ -44,7 +44,7 @@ export default defineComponent({
   data() {
     return {
       currentSlide: 0,
-      sliderRef: null as HTMLElement,
+      sliderRef: null,
       index: 1
     }
   },
@@ -56,11 +56,6 @@ export default defineComponent({
 
     },
     scrollToSlide(dot: any) {
-      const container = this.sliderRef;
-      if (!container) return;
-      const target = container.querySelector(`[data-index="${this.index}"]`) as HTMLElement | null;
-      if (!target) return;
-      container.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
 
     }
   },
