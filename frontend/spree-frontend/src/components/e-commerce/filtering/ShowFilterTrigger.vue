@@ -1,10 +1,8 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import {IonIcon} from "@ionic/vue";
-import {useFiltering} from "@/composables/useFilterting.ts";
 import {useHelpers} from "@/composables/useHelpers.ts";
-const { isFiltersActive } = await useFiltering();
-const { toggleBodyClass, removeBodyClass } = useHelpers();
+import {funnelOutline} from "ionicons/icons";
 
 interface ShowFilterTriggerData {
   isFiltersActive: boolean;
@@ -22,7 +20,8 @@ export default defineComponent({
   },
   data(){
     return {
-      isFiltersActive: true
+      isFiltersActive: true,
+      funnelOutline
     } as ShowFilterTriggerData
   },
   methods: {
@@ -41,7 +40,7 @@ export default defineComponent({
       aria-label="Show filters"
       @click.prevent="toggleBodyClass('show-filters')"
       title="Show filters">
-      <ion-icon name="ion:funnel-outline" size="18" class="transition-transform transform transform-origin-center dark:text-gray-300" />
+      <ion-icon icon:="funnel-outline" size="18" class="transition-transform transform transform-origin-center dark:text-gray-300" />
     </button>
     <span class="absolute z-20 w-2.5 h-2.5 rounded-full bg-primary dark:bg-primary -top-1 -right-1" v-if="isFiltersActive" />
   </div>

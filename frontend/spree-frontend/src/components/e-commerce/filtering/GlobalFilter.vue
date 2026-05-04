@@ -21,6 +21,9 @@ export default defineComponent({
   components: {
     IonIcon
   },
+  props: {
+    filterTitle: {type:String, default: ""}
+  },
   data(){
     return {
       isOpen: true,
@@ -33,8 +36,7 @@ export default defineComponent({
         showCount: 1
       },
       selectedTerms: "",
-      filterTitle: ""
-    } as GlobalFilterData
+    } as any
   } ,
   methods: {
     checkboxChanged(){

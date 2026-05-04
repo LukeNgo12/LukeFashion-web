@@ -52,17 +52,15 @@ export default defineComponent({
       },
       message: "",
       isPending: true,
-      errorMessage: ""
-    } as LoginAndRegisterData
+      errorMessage: "",
+      buttonText: "Log In"
+    }
   },
   methods : {
     navigate(view: any){
 
     },
     formTitle(){
-
-    },
-    buttonText(){
 
     },
     emailLabel(){
@@ -88,29 +86,29 @@ export default defineComponent({
   <div class="flex flex-col justify-center max-w-lg mx-auto my-16 text-center min-h-150 align-center">
     <div class="flex flex-col my-8">
       <h1 class="text-xl font-semibold text-gray-900 lg:text-3xl dark:text-white">{{ formTitle }}</h1>
-      <p v-if="formView === FormView.LOGIN" class="mt-2 text-gray-500 dark:text-gray-400">
+      <p  class="mt-2 text-gray-500 dark:text-gray-400">
         {{$t('forms.loginAndRegister.formTitle')}}
-        <a class="font-semibold cursor-pointer text-primary hover:underline" @click="navigate(FormView.REGISTER)"> {{ $t('account.accountRegister') }} </a>.
+        <a class="font-semibold cursor-pointer text-primary hover:underline" @click="navigate(FormView.REGISTER)"> {{ $t('components.loginAndRegister.accountRegister') }} </a>.
       </p>
-      <p v-else-if="formView === FormView.REGISTER" class="mt-2 text-gray-500 dark:text-gray-400">
+      <p  class="mt-2 text-gray-500 dark:text-gray-400">
         {{$t('forms.loginAndRegister.accountHasAccount')}}Account Has Account
-        <a @click="navigate(FormView.LOGIN)" class="cursor-pointer text-primary text-semibold hover:underline">Sign in</a>.
+        <a @click="navigate(FormView.LOGIN)" class="cursor-pointer text-primary text-semibold hover:underline">{{$t('components.loginAndRegister.signIn')}}Sign in</a>.
       </p>
     </div>
 
-    <LoginProviders class="mb-8" v-if="formView === FormView.LOGIN || formView === FormView.REGISTER" />
+    <LoginProviders class="mb-8" />
 
     <form @submit.prevent="handleFormSubmit(userInfo)">
-      <p v-if="formView === FormView.FORGOT_PASSWORD" class="mb-8 text-sm text-gray-500 dark:text-gray-400">{{ $t('account.enterEmailOrUsernameForReset') }}</p>
+      <p  class="mb-8 text-sm text-gray-500 dark:text-gray-400">{{ $t('components.loginAndReigster.enterEmailOrUsernameForReset') }}</p>
       <input
-        v-if="formView === FormView.REGISTER || formView === FormView.FORGOT_PASSWORD"
+
         id="email"
         v-model="userInfo.email"
         :placeholder="inputPlaceholder.email"
         autocomplete="email"
         type="text"
         required=true />
-      <div v-if="formView !== FormView.FORGOT_PASSWORD">
+      <div >
         <input v-model="userInfo.username" :placeholder="inputPlaceholder.username" autocomplete="username" type="text" required />
         <PasswordInput
           v-model="userInfo.password"
@@ -123,17 +121,17 @@ export default defineComponent({
       </Transition>
 
       <!-- Login button -->
-      <Button :loading="isPending" type="submit" class="my-6 text-lg">
+      <button :loading="isPending" type="submit" class="my-6 text-lg">
         {{ buttonText }}
-      </Button>
+      </button>
 
       <div class="flex items-center justify-between mt-4" v-if="formView === FormView.LOGIN">
-        <div class="text-sm font-semibold cursor-pointer text-primary hover:underline" @click="navigate(FormView.FORGOT_PASSWORD)">Forgot password?</div>
+        <div class="text-sm font-semibold cursor-pointer text-primary hover:underline" @click="navigate(FormView.FORGOT_PASSWORD)">{{$t('components.loginAndRegister.forgotPassword')}}Forgot password?</div>
       </div>
     </form>
 
     <div class="my-8 text-center cursor-pointer text-primary hover:underline" @click="navigate(FormView.LOGIN)" v-if="formView === FormView.FORGOT_PASSWORD">
-      {{$t('forms.loginAndRegister.backToLogin')}}
+      {{$t('components.loginAndRegister.backToLogin')}}
     </div>
 
     <Transition name="scale-y" mode="out-in">
@@ -146,10 +144,45 @@ export default defineComponent({
 @reference "#tailwind";
 
 input[type='text'] {
-  @apply border rounded-lg mb-4 w-full p-3 px-4 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.5rem; /* 8px */
+  margin-bottom: 1rem;   /* 16px */
+  width: 100%;
+  padding: 0.75rem 1rem; /* 12px vertical, 16px horizontal */
+  background-color: #ffffff;
+  border-color: #d1d5db; /* gray-300 */
+  color: #111827;        /* gray-900 */
 }
 
 form button {
-  @apply rounded-lg font-bold bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 py-3 px-8 hover:bg-gray-900 dark:hover:bg-gray-100 mb-4 w-full;
+  /* Layout & Sizing */
+  width: 100%;
+  margin-bottom: 1rem; /* 16px */
+  padding: 0.75rem 2rem; /* 12px top/bottom, 32px left/right */
+
+  /* Typography */
+  font-weight: 700;
+  color: #ffffff;
+
+  /* Visuals */
+  background-color: #1f2937; /* gray-800 */
+  border-radius: 0.5rem; /* 8px */
+  transition: background-color 0.2s; /* standard tailwind hover transition */
+}
+
+form button:hover {
+  background-color: #111827; /* gray-900 */
+}
+
+@media (prefers-color-scheme: dark) {
+  .form button {
+    background-color: #e5e7eb; /* gray-200 */
+    color: #1f2937; /* gray-800 */
+  }
+
+  .form button:hover {
+    background-color: #f3f4f6; /* gray-100 */
+  }
 }
 </style>

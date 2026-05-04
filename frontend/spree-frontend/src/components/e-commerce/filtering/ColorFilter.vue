@@ -1,6 +1,7 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import {IonIcon} from "@ionic/vue";
+import {chevronDownOutline} from "ionicons/icons";
 
 interface ColorFilterData {
   isOpen: boolean;
@@ -17,17 +18,20 @@ export default defineComponent({
 
   },
   name: "ColorFilter",
+  props: {
+    filterTitle: {type: String, default: ""}
+  },
   data(){
     return {
       isOpen: true,
-      filterTitle: "filterTitle",
+      chevronDownOutline,
       selectedTerms: "",
       checkboxChanged: true,
       attribute: {
         terms: [],
         slug: ""
       }
-    } as ColorFilterData
+    } as any
   },
   methods: {
     checkboxChanged(){
@@ -39,12 +43,12 @@ export default defineComponent({
 <template>
   <div class="cursor-pointer flex font-semibold pt-8 pb-4 leading-none justify-between items-center text-gray-900 dark:text-white" @click="isOpen = !isOpen">
     <span>{{ filterTitle }}</span>
-    <ion-icon name="ion:chevron-down-outline" class="transform text-gray-600 dark:text-gray-400" :class="isOpen ? 'rotate-180' : ''" />
+    <ion-icon :icon="chevron-down-outline" class="transform text-gray-600 dark:text-gray-400" :class="isOpen ? 'rotate-180' : ''" />
   </div>
   <div  class="mr-6 max-h-60 grid gap-1.5 swatches overflow-auto custom-scrollbar">
     <div >
       <input  class="hidden" type="checkbox"  @change="checkboxChanged" />
-      <label  class="cursor-pointer m-0"></label>
+      <label :for="'blue'" class="cursor-pointer m-0"></label>
     </div>
   </div>
 

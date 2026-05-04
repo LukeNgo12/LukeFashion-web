@@ -67,7 +67,7 @@ export default defineComponent({
       <CategoryFilter  :terms="productCategoryTerms" />
       <div v-for="attribute in attributesWithTerms" :key="attribute.slug">
         <ColorFilter />
-        <GlobalFilter  />
+        <GlobalFilter :filterTitle="'Global Filter'" />
       </div>
       <OnSaleFilter />
       <StarRatingFilter v-if="storeSettings.showReviews" />

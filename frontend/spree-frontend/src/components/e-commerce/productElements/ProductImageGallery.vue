@@ -49,12 +49,6 @@ export default defineComponent({
       node: {
         name: ""
       },
-      gallery: {
-        nodes: [],
-        sourceUrl: "",
-        altText: "",
-        title: ""
-      },
       galleryImages: [
         {
           databaseId: "",
@@ -78,8 +72,9 @@ export default defineComponent({
   <div>
     <SaleBadge :node class="absolute text-base top-4 right-4" />
     <img
+      v-for="image in gallery"
       class="rounded-xl object-contain w-full min-w-87.5"
-      src="/Luke-fashion-logo.png"
+      :src="image"
      />
     <div class="my-4 gallery-images">
       <img

@@ -37,7 +37,7 @@ export default defineComponent({
 <template>
   <nav>
     <router-link to="/">{{$t('generalElements.mainMenu.home')}}</router-link>
-    <router-link to="/productsList">{{$t('generalElements.mainMenu.products')}}</router-link>
+    <router-link to="/products">{{$t('generalElements.mainMenu.products')}}</router-link>
     <router-link to="/categories">{{$t('generalElements.mainMenu.category')}}</router-link>
     <router-link to="/contact">{{$t('generalElements.mainMenu.contact')}}</router-link>
 

@@ -85,7 +85,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <component :is="componentType" v-bind="componentAttrs as any" :class="buttonClasses">
+  <div :is="componentType" v-bind="componentAttrs as any" :class="buttonClasses">
     <!-- Loading Icon -->
     <LoadingIcon v-if="loading" :size="iconSize" color="currentColor" stroke="4" />
 
@@ -97,7 +97,7 @@ export default defineComponent({
 
     <!-- Right Icon -->
     <ion-icon v-if="icon && iconPosition === 'right' && !loading" :name="icon" :size="iconSize" />
-  </component>
+  </div>
 </template>
 
 <style scoped lang="postcss">

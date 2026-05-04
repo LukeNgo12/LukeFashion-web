@@ -12,3 +12,4 @@ export const CATEGORIES = [
     categoryName: "Women's perfume"
   }
 ]
+

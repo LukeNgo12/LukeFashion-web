@@ -77,18 +77,58 @@ export default defineComponent({
 </template>
 
 <style scoped lang="postcss">
-@reference "#tailwind";
-
-tbody tr:nth-child(odd) {
-  @apply bg-gray-50 dark:bg-gray-700/50;
-}
-
+/* Table Body Row Styling */
 tbody tr {
-  @apply text-sm text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200;
+  font-size: 0.875rem; /* text-sm */
+  color: #6b7280; /* text-gray-500 */
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Zebra Striping */
+  &:nth-child(odd) {
+    background-color: #f9fafb; /* bg-gray-50 */
+  }
+
+  &:hover {
+    color: #1f2937; /* hover:text-gray-800 */
+  }
+
+  /* Dark Mode Styles */
+  @media (prefers-color-scheme: dark) {
+    color: #9ca3af; /* dark:text-gray-400 */
+
+    &:nth-child(odd) {
+      /* dark:bg-gray-700/50 - Using RGBA for 50% opacity */
+      background-color: rgba(55, 65, 81, 0.5);
+    }
+
+    &:hover {
+      color: #e5e7eb; /* dark:hover:text-gray-200 */
+    }
+  }
 }
 
+/* Table Cell & Header Styling */
 td,
 th {
-  @apply py-2 px-3 dark:text-gray-300;
+  padding-top: 0.5rem; /* py-2 */
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem; /* px-3 */
+  padding-right: 0.75rem;
+
+  @media (prefers-color-scheme: dark) {
+    color: #d1d5db; /* dark:text-gray-300 */
+  }
+}
+
+/* Optional: Class-based Dark Mode Support */
+.dark {
+  & tbody tr {
+    color: #9ca3af;
+    &:nth-child(odd) { background-color: rgba(55, 65, 81, 0.5); }
+    &:hover { color: #e5e7eb; }
+  }
+  & td, & th {
+    color: #d1d5db;
+  }
 }
 </style>

@@ -49,13 +49,38 @@ export const i18n = createI18n({
           }
         },
         "forms": {
+          "personalInformation": {
+            "personalInformation": "Personal Information",
+            "mangageYourPersonal": "Manage Your Personal",
+            "personalDetails": "Personal Details",
+            "lastName": "Last Name",
+            "username": "Username",
+            "email": "Email"
+          },
           "addressSummary": {
             "edit": "",
             "addressSummary": ""
           },
           "billingAndShipping": {
             "billingAndShipping": "",
-            "billingAddress": ""
+            "billingAddress": "",
+            "manageYourBilling": "Manage Your Billing",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "billingPhone": "Billing Phone",
+            "optional": "Optional",
+            "address1": "Address 1",
+            "address2": "Address 2",
+            "city": "City",
+            "zip": "Zip",
+            "billing": {
+              "optional": "Optional",
+              "city": "City",
+              "zip": "Zip",
+              "email": "Email",
+              "address1": "Address 1",
+              "address2": "Address 2",
+            },
           },
           "billingDetails": {
             "firstName": "First Name",
@@ -69,8 +94,15 @@ export const i18n = createI18n({
             "zip": "Zip",
             "phone": "Phone",
           },
-          "changePassword": {},
-          "loginAndRegister": {}
+          "changePassword": {
+            "newPassword": "New Password",
+            "confirmNewPassword": "Confirm New Password"
+          },
+          "loginAndRegister": {
+            "formTitle":"Form title",
+            "backToLogin": "Back to Login",
+            "accountHasAccount": "Account has account"
+          }
         },
         "generalElements": {
           "mobileMenu": {
@@ -236,7 +268,8 @@ export const i18n = createI18n({
             "title": "Title:",
             "description": "Description:",
             "noActivityFound": "No Activity Found",
-            "exportActivityLog": "Export Activity Log"
+            "exportActivityLog": "Export Activity Log",
+            "trackAccountAcitvity": "Track Account Activity"
           },
           "accountMyDetails": {},
           "accountSettings": {
@@ -283,6 +316,15 @@ export const i18n = createI18n({
           "wpaAdminLink": {},
         },
         "views": {
+          "myAccountView": {
+            "personalInformation": "Personal Information",
+            "accountLogout": "Account Logout",
+            "Password": "Password",
+            "billingAndShipping": "Billing And Shipping",
+            "order": "Order",
+            "downloads": "Downloads",
+            "settings": "Settings"
+          },
           "homeView": {
             "freeShipping": "Free Shipping",
             "freeShippingOnOrder": "Free shipping on order over $50",

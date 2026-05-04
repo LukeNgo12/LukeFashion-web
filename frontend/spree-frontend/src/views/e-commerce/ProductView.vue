@@ -104,23 +104,22 @@ export default defineComponent({
     <div >
 <!--      <SEOHead :info="product" />-->
 <!--      <Breadcrumb :product class="mb-6" />-->
-      {{ console.log(productById) }}
       <div class="flex flex-col gap-10 md:flex-row md:justify-between lg:gap-24">
-<!--        <ProductImageGallery-->
-<!--          :main-image="productImage"-->
-<!--          :gallery="productGallery"-->
-<!--          :node="displayProduct"-->
-<!--          :activeVariation="activeVariation-->
-<!--          || {}" />-->
-        <img  class="relative flex-1 skeleton" src="/Luke-fashion-logo.png" :alt="product.name" />
+        <ProductImageGallery
+          :main-image="productById.images[0]"
+          :gallery="productById.images"
+          :node="displayProduct"
+          :activeVariation="activeVariation
+          || {}" />
+        <img  class="relative flex-1 rounded-xl skeleton "
+              :src="productById.images[0]" :alt="product.name" />
 
         <div class="w-full lg:max-w-md xl:max-w-lg md:py-2">
           <div class="flex justify-between mb-4">
             <div class="flex-1">
-              {{console.log(locale)}}
 
               <h1 v-if="locale" class="flex flex-wrap items-center gap-2 mb-2 text-2xl font-sesmibold">
-                {{ productById.productName   }}
+                {{ productById.productName[locale]   }}
 <!--                <LazyWPAdminLink :link="`/wp-admin/post.php?post=${"product.databaseId"}&action=edit`">Edit</LazyWPAdminLink>-->
               </h1>
               <StarRating :rating="averageRating" :count="reviewCount"  />

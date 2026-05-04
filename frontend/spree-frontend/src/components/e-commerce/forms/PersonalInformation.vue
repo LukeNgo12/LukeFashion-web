@@ -102,9 +102,9 @@ export default defineComponent({
       <!-- Submit Button -->
       <div
         class="p-6 pt-4 flex bg-gray-50 dark:bg-gray-800 rounded-b-lg border-t border-gray-100 dark:border-gray-700">
-        <Button :loading="loading" type="submit" class="ml-auto" :class="button.color">
+        <button :loading="loading" type="submit" class="ml-auto" :class="button.color">
           {{ button.text }}
-        </Button>
+        </button>
       </div>
     </form>
   </div>

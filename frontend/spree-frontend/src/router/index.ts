@@ -51,13 +51,20 @@ const router = createRouter({
     },
     {
       path: '/product-category/:category',
+      name: "product-category",
       component: () => import('../views/e-commerce/CategoriesView.vue')
     },
 
     {
       path: '/wishlist',
+      name: "wishlist",
       component: () => import('../views/e-commerce/WishlistView.vue')
     },
+    {
+      path: "/my-account",
+      name: "my-account",
+      component: () => import('../views/e-commerce/MyAccountView.vue')
+    }
   ],
 })
 

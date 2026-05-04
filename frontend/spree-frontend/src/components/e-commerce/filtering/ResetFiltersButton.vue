@@ -5,23 +5,24 @@ import {useFiltering} from "@/composables/useFilterting.ts";
 export default defineComponent({
   name: "ResetFiltersButton",
   setup(){
-    const { resetFilter } = useFiltering();
-    return {resetFilter}
+
   },
   data(){
     return {}
   },
   methods: {
+    resetFilter(){
 
+    }
   }
 
 })
 </script>
 
 <template>
-  <Button class="mt-8 w-full" @click="resetFilter">
+  <button class="mt-8 w-full" @click="resetFilter">
     {{ $t('filtering.resetFiltersButton.clearFilters') }}
-  </Button>
+  </button>
 </template>
 
 <style scoped lang="postcss">

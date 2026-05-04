@@ -113,8 +113,15 @@ export default defineComponent({
 
 html,
 body {
-  @apply bg-gray-100 dark:bg-[#18202f] text-gray-900 dark:text-gray-100;
+  background-color: #f3f4f6; /* bg-gray-100 */
+  color: #111827; /* text-gray-900 */
   scroll-behavior: smooth;
+
+  /* Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    background-color: #18202f; /* custom hex */
+    color: #f3f4f6; /* text-gray-100 */
+  }
 }
 
 html {
@@ -126,107 +133,116 @@ img {
   image-rendering: -webkit-optimize-contrast;
 }
 
+/* Code Blocks */
 pre {
-  @apply rounded-sm bg-gray-800 my-8 text-xs text-white p-4 whitespace-pre-wrap overflow-auto;
+  border-radius: 0.125rem; /* rounded-sm */
+  background-color: #1f2937; /* bg-gray-800 */
+  margin-top: 2rem; /* my-8 */
+  margin-bottom: 2rem;
+  font-size: 0.75rem; /* text-xs */
+  color: #ffffff; /* text-white */
+  padding: 1rem; /* p-4 */
+  white-space: pre-wrap;
+  overflow: auto;
 }
 
-/* Slide-from-right & Slide-from-left */
-.slide-from-right-leave-active,
-.slide-from-right-enter-active,
-.slide-from-left-leave-active,
-.slide-from-left-enter-active {
-  transition: transform 300ms ease-in-out;
+/* Slide Animations */
+.slide-from-right,
+.slide-from-left {
+  &-leave-active,
+  &-enter-active {
+    transition: transform 300ms ease-in-out;
+  }
 }
 
-.slide-from-right-enter-from,
-.slide-from-right-leave-to {
-  transform: translateX(500px);
+.slide-from-right {
+  &-enter-from,
+  &-leave-to {
+    transform: translateX(500px);
+  }
 }
 
-.slide-from-left-enter-from,
-.slide-from-left-leave-to {
-  transform: translateX(-500px);
+.slide-from-left {
+  &-enter-from,
+  &-leave-to {
+    transform: translateX(-500px);
+  }
 }
 
-/* Fade */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 300ms ease-in-out;
+/* Fade Transitions */
+.fade {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity 300ms ease-in-out;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+/* Scale Y Transitions */
+.scale-y {
+  &-enter-active,
+  &-leave-active {
+    transition: all 500ms linear;
+    will-change: max-height, opacity;
+    max-height: 9999px;
+    overflow: hidden;
+    opacity: 1;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    max-height: 0;
+    opacity: 0;
+  }
 }
 
-/* Scale Y */
-.scale-y-enter-active,
-.scale-y-leave-active {
-  transition: all 500ms linear;
-  will-change: max-height, opacity;
-  max-height: 9999px;
-  overflow: hidden;
-  opacity: 1;
+/* Scrollbar Customization */
+.custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0.375rem; /* w-1.5 */
+
+    &-track {
+      border-radius: 0.125rem; /* rounded-sm */
+      background-color: #f3f4f6; /* bg-gray-100 */
+    }
+
+    &-thumb {
+      border-radius: 0.125rem; /* rounded-sm */
+      background-color: #9ca3af; /* bg-gray-400 */
+    }
+  }
 }
 
-.scale-y-enter-from,
-.scale-y-leave-to {
-  max-height: 0;
-  opacity: 0;
-}
-
+/* Keyframes */
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.custom-scrollbar::-webkit-scrollbar-track,
-.custom-scrollbar::-webkit-scrollbar {
-  @apply rounded-sm bg-gray-100 w-1.5;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply rounded-sm bg-gray-400;
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0.001;
-  }
-
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0.001; }
+  100% { opacity: 1; }
 }
 
 @keyframes fadeDisabledIn {
-  0% {
-    opacity: 0.001;
-  }
-
-  100% {
-    opacity: 0.7;
-  }
+  0% { opacity: 0.001; }
+  100% { opacity: 0.7; }
 }
 
 @keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.001;
-  }
+  0% { opacity: 1; }
+  100% { opacity: 0.001; }
 }
 
+/* Page Transitions */
 .page-enter-active,
 .page-leave-active {
   transition: opacity 20ms;
+  animation-duration: 200ms;
 }
 
 .page-enter,
@@ -235,7 +251,6 @@ pre {
 }
 
 .page-enter-active {
-  animation-duration: 200ms;
   animation-name: fadeIn;
   animation-timing-function: linear;
   backface-visibility: hidden;
@@ -243,16 +258,12 @@ pre {
 
 .page-leave-active {
   animation-name: fadeOut;
-  animation-duration: 200ms;
 }
 
+/* Skeleton Loading Animation */
 @keyframes skelaton {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 img.skeleton {
@@ -261,80 +272,123 @@ img.skeleton {
   background-size: 200% 100%;
 }
 
+/* Custom Checkboxes and Radios */
 input[type='checkbox'],
 input[type='radio'] {
-  @apply bg-white border rounded-lg cursor-pointer font-sans outline-hidden border-gray-300 w-full p-3 transition-all duration-150 appearance-none hover:border-primary dark:bg-gray-700 dark:border-gray-600;
-
-  width: 1em;
-  height: 1em;
-  position: relative;
+  /* @apply replacement */
+  background-color: #ffffff;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.5rem; /* 8px */
   cursor: pointer;
-  border-radius: 4px;
+  font-family: inherit;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  width: 1em; /* Overridden manually below */
+  height: 1em;
   padding: 0;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  appearance: none;
+  position: relative;
+
+  &:hover {
+    border-color: var(--color-primary, #3b82f6);
+  }
+
+  /* Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    background-color: #374151; /* gray-700 */
+    border-color: #4b5563; /* gray-600 */
+  }
+
+  /* Pseudo-elements for Icons */
+  &:after {
+    content: '';
+    display: block;
+    opacity: 0;
+    transition: all 250ms cubic-bezier(0.65, -0.43, 0.4, 1.71);
+  }
+
+  &:checked {
+    background-color: var(--color-primary, #3b82f6);
+    border-color: transparent;
+    border-width: 0;
+
+    &:after {
+      opacity: 1;
+    }
+  }
+
+  /* Label Styling Hook */
+  & + label {
+    cursor: pointer;
+    color: #4b5563; /* gray-600 */
+    transition: color 150ms;
+
+    &:hover {
+      color: var(--color-primary, #3b82f6);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      color: #9ca3af; /* gray-400 */
+    }
+  }
+
+  &:checked + label {
+    color: #1f2937; /* gray-800 */
+
+    @media (prefers-color-scheme: dark) {
+      color: #ffffff;
+    }
+
+    &:hover {
+      color: var(--color-primary-dark, #2563eb);
+    }
+  }
 }
 
+/* Specific Shapes & Icon Offsets */
+input[type='radio'] {
+  border-radius: 50%;
+
+  &:after {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transform: scale(0);
+    position: absolute;
+    background: #fff;
+    top: 4px;
+    left: 4px;
+  }
+
+  &:checked:after {
+    transform: scale(1);
+  }
+}
+
+input[type='checkbox'] {
+  border-radius: 4px;
+
+  &:after {
+    width: 5px;
+    height: 9px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(0deg) translate(-1px, 1px) scale(0.75);
+    position: absolute;
+    top: 3px;
+    left: 6.5px;
+  }
+
+  &:checked:after {
+    transform: rotate(45deg) translate(-1px, 1px) scale(1);
+  }
+}
+
+/* Global Dark Scheme Utility */
 .dark input {
   color-scheme: dark;
 }
 
-input[type='radio'] {
-  border-radius: 50%;
-}
-
-input[type='checkbox']:after,
-input[type='radio']:after {
-  content: '';
-  display: block;
-  opacity: 0;
-  transition: all 250ms cubic-bezier(0.65, -0.43, 0.4, 1.71);
-}
-
-input[type='checkbox']:after {
-  width: 5px;
-  height: 9px;
-  border: 2px solid #fff;
-  border-top: 0;
-  border-left: 0;
-  transform: rotate(0deg) translate(-1px, 1px) scale(0.75);
-  position: absolute;
-  top: 3px;
-  left: 6.5px;
-}
-
-input[type='radio']:after {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  transform: scale(0);
-  position: absolute;
-  background: #fff;
-  top: 4px;
-  left: 4px;
-}
-
-input[type='checkbox']:checked:after,
-input[type='checkbox'] + label,
-input[type='radio'] + label {
-  @apply cursor-pointer text-gray-600 dark:text-gray-400 hover:text-primary;
-}
-
-input[type='checkbox']:checked + label,
-input[type='radio']:checked + label {
-  @apply text-gray-800 dark:text-white hover:text-primary-dark;
-}
-
-input[type='checkbox']:checked,
-input[type='radio']:checked {
-  @apply bg-primary border-0;
-}
-
-input[type='checkbox']:checked:after {
-  opacity: 1;
-  transform: rotate(45deg) translate(-1px, 1px) scale(1);
-}
-
-input[type='radio']:checked:after {
-  opacity: 1;
-  transform: scale(1);
-}
 </style>
