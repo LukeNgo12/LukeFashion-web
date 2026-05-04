@@ -21,7 +21,7 @@ export default defineComponent({
     return {
       isOpen: true,
       filterTitle: "filterTitle",
-      selectedTerms: "sd",
+      selectedTerms: "",
       checkboxChanged: true,
       attribute: {
         terms: [],
@@ -31,7 +31,6 @@ export default defineComponent({
   },
   methods: {
     checkboxChanged(){
-      setFilter(attribute.slug, selectedTerms.value);
     }
   }
 })
@@ -42,10 +41,10 @@ export default defineComponent({
     <span>{{ filterTitle }}</span>
     <ion-icon name="ion:chevron-down-outline" class="transform text-gray-600 dark:text-gray-400" :class="isOpen ? 'rotate-180' : ''" />
   </div>
-  <div v-show="isOpen" class="mr-6 max-h-60 grid gap-1.5 swatches overflow-auto custom-scrollbar">
-    <div v-for="color in attribute.terms" :key="color.slug" :style="{ '--color': color.slug }" :title="color.name">
-      <input :id="color.slug" v-model="selectedTerms" class="hidden" type="checkbox" :value="color.slug" @change="checkboxChanged" />
-      <label :for="color.slug" class="cursor-pointer m-0"></label>
+  <div  class="mr-6 max-h-60 grid gap-1.5 swatches overflow-auto custom-scrollbar">
+    <div >
+      <input  class="hidden" type="checkbox"  @change="checkboxChanged" />
+      <label  class="cursor-pointer m-0"></label>
     </div>
   </div>
 

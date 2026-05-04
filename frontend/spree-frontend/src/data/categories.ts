@@ -9,6 +9,6 @@ export const CATEGORIES = [
   },
   {
     frontendId: "3",
-
+    categoryName: "Women's perfume"
   }
 ]

@@ -1,11 +1,11 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 import ProductCard from "@/components/e-commerce/productElements/ProductCard.vue";
-import {Pagination} from "reka-ui/namespaced";
 import NoProductsFound from "@/components/e-commerce/shopElements/NoProductsFound.vue";
 import axios from "axios";
 import {PRODUCTS} from "@/data/products.ts";
-
+import Pagination from "@/components/e-commerce/shopElements/Pagination.vue";
+Pagination
 interface ProductGridData {
   products: [],
   productsToShow: { id: 500 }[]
@@ -27,39 +27,39 @@ export default defineComponent({
     } as any
   },
   mounted(){
-    const getProducts = async() => {
-      const products = await axios.get("http://localhost:3000/admin/products")
-      let shownProducts = products.data.map(product => {
-        return {
-            id: product.id,
-            singularPrice: product.price,
-            regularPrice: product.price * 130/100,
-            description: product.description,
-        }
-      })
-    }
+    // const getProducts = async() => {
+    //   const products = await axios.get("http://localhost:3000/admin/products")
+    //   let shownProducts = products.data.map(product => {
+    //     return {
+    //         id: product.id,
+    //         singularPrice: product.price,
+    //         regularPrice: product.price * 130/100,
+    //         description: product.description,
+    //     }
+    //   })
+    // }
   }
 })
 </script>
 
 <template>
   <Transition name="fade" mode="out-in">
-    <section v-if="!!products.length" class="relative w-full">
+    <section class="relative w-full">
       <TransitionGroup name="shrink" tag="div" mode="in-out" class="product-grid">
-        <div class="grid grid-cols-4 gap-4">
+        <div class="grid md:grid-cols-4 gap-4 sm:grid-cols-2">
           <ProductCard v-for="(node, i) in productsToShow" :node :slider-images/>
-
         </div>
       </TransitionGroup>
-      <Pagination/>
 
     </section>
 
-    <NoProductsFound v-else/>
   </Transition>
+  <Pagination/>
+  <NoProductsFound />
+
 </template>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
 @reference "#tailwind";
 
 .product-grid {

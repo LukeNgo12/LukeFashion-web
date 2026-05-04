@@ -674,6 +674,7 @@ For occasions such as cocktail parties, weddings, daytime events, or any setting
       vi: ""
     },
     images: [
+      "/products/product-id-15/23.png",
       "/products/product-id-15/1.jpeg",
       "/products/product-id-15/2.jpeg",
       "/products/product-id-15/3.jpeg",
@@ -724,6 +725,7 @@ It pairs effortlessly with strapless gowns, slip dresses, or midi dresses, makin
         "Áo choàng dễ dàng kết hợp cùng đầm cúp ngực, đầm hai dây hoặc đầm midi, phù hợp cho các buổi tiệc tối, sự kiện trang trọng hay những dịp cần hình ảnh chỉn chu, nhẹ nhàng.\n"
     },
     images: [
+      "/products/product-id-16/5.jpeg",
       "/products/product-id-16/1.jpeg",
       "/products/product-id-16/2.jpeg",
       "/products/product-id-16/3.jpeg",

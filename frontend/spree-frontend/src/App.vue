@@ -66,7 +66,7 @@ export default defineComponent({
   },
   mounted(){
     const getOrders = async()=> {
-      const data = await axios.get("http://localhost:3000/admin/orders");
+      // const data = await axios.get("http://localhost:3000/admin/orders");
 
 
 

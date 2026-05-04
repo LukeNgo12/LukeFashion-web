@@ -1,6 +1,7 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 import {IonIcon} from "@ionic/vue";
+import {chevronBack, chevronForward} from "ionicons/icons";
 
 export default defineComponent({
   name: "Pagination",
@@ -9,8 +10,10 @@ export default defineComponent({
   },
   data(){
     return {
-      numberOfPages: 50,
-      page: 1
+      numberOfPages: 2,
+      page: 1,
+      chevronBack,
+      chevronForward
     }
   },
   methods:{
@@ -32,36 +35,36 @@ export default defineComponent({
     <!-- Pagination -->
     <nav v-if="numberOfPages && numberOfPages > 1" class="inline-flex self-end -space-x-px rounded-md shadow-xs isolate" aria-label="Pagination">
       <!-- PREV -->
-      <RouterLink
-        to="prevSrc(page)"
+      <router-link
+        to="{{prevSrc(page)}}"
         class="prev"
         :disabled="page == 1"
         :class="{ 'cursor-not-allowed': page == 1 }"
         :aria-disabled="page == 1"
         aria-label="Previous">
-        <ion-icon name="ion:chevron-back-outline" size="20" class="w-5 h-5" />
-      </RouterLink>
+        <ion-icon :icon="chevronBack" size="20" class="w-5 h-5" />
+      </router-link>
 
       <!-- NUMBERS -->
-      <RouterLink
+      <router-link
         v-for="pageNumber in numberOfPages"
         :key="pageNumber"
-        to="numberSrc(pageNumber)"
+        to="{{numberSrc(pageNumber)}}"
         :aria-current="pageNumber === page ? 'page' : undefined"
         class="page-number">
         {{ pageNumber }}
-      </RouterLink>
+      </router-link>
 
       <!-- NEXT -->
-      <RouterLink
+      <router-link
         to="nextSrc(page)"
         class="next"
         :disabled="page === numberOfPages"
         :class="{ 'cursor-not-allowed': page === numberOfPages }"
         :aria-disabled="page === numberOfPages"
         aria-label="Next">
-        <ion-icon name="ion:chevron-forward-outline" size="20" class="w-5 h-5" />
-      </RouterLink>
+        <ion-icon :icon="chevronForward" size="20" class="w-5 h-5" />
+      </router-link>
     </nav>
   </div>
 </template>

@@ -42,7 +42,11 @@ export default defineComponent({
     node: {type: Object, default: {}}
   },
   data() {
-    return {}
+    return {
+      currentSlide: 0,
+      sliderRef: null as HTMLElement,
+      index: 1
+    }
   },
   mounted() {
     console.log(this.node.id)
@@ -52,6 +56,11 @@ export default defineComponent({
 
     },
     scrollToSlide(dot: any) {
+      const container = this.sliderRef;
+      if (!container) return;
+      const target = container.querySelector(`[data-index="${this.index}"]`) as HTMLElement | null;
+      if (!target) return;
+      container.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
 
     }
   },
@@ -61,14 +70,17 @@ export default defineComponent({
 <template>
   <div class="relative group">
     <div class="relative block">
-      <SaleBadge class="absolute z-10 top-2 right-2"/>
+      <SaleBadge v-if="node.isSale" class="absolute z-10 top-2 right-2"/>
       <div
+
         ref="sliderRef"
         class="no-slider flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x overscroll-x-contain overscroll-y-auto [-webkit-overflow-scrolling:touch]"
         @scroll.passive="updateCurrentSlide"
       >
+        <template v-for="(image, slideIndex) in node.images" :key="image.key">
+
         <router-link
-           class="product-card-image product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
+           class="product-card-slide  product-card-image product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
            :data-index="100"
            :to="'/product/' + node.frontendId">
 
@@ -81,8 +93,9 @@ export default defineComponent({
            />
 
         </router-link>
+        </template>
         <div
-                v-for="(image, slideIndex) in node.images"
+          v-for="(image, slideIndex) in node.images"
 
         class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
           data-index="1">
@@ -93,26 +106,18 @@ export default defineComponent({
             class="product-image-card object-cover object-top w-full h-full rounded-lg"
           />
         </div>
-        <div
-          class="product-card-slide block flex-[0_0_100%] snap-start snap-always aspect-8/9 overflow-hidden rounded-lg"
-          data-index="1">
-          <img
-            :src="node.images[1]"
-            alt="alt"
-            title="title"
-            class="product-image-card object-cover object-top w-full h-full rounded-lg"
-          />
-        </div>
+
       </div>
       <div class="absolute flex gap-1 bottom-2 justify-self-center">
         <button
-          key="`dot-image-key`"
+          v-for="(image, dotIndex) in node.images"
+          :key="`dot-${image.key}`"
           class="product-card-dot rounded-full h-1.5 w-1.5 transition-colors cursor-pointer"
+          :class="dotIndex === currentSlide ? 'bg-white' : 'bg-gray-400/60'"
           type="button"
           tabindex="-1"
-          aria-label="`View image 1 of 1`"
-        >Button
-        </button>
+          :aria-label="`View image ${dotIndex + 1} of ${sliderImages.length}`"
+          @click="scrollToSlide(dotIndex)"></button>
       </div>
     </div>
     <div class="p-2">
